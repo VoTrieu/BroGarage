@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
 import { SlideMenu } from "primereact/slidemenu";
 import {
   useNavigate,
@@ -8,11 +9,12 @@ import {
 } from "react-router-dom";
 const SidebarMenu = () => {
   const isShowSlidebar = useSelector((state) => state.ui.slidebarIsVisible);
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const location = useLocation();
   const items = [
     {
-      label: "Trang Chủ",
+      label: t("sidebar.home"),
       icon: "pi pi-fw pi-home",
       className: useMatch("/app/home") ? "surface-hover" : "",
       command: () => {
@@ -20,7 +22,7 @@ const SidebarMenu = () => {
       },
     },
     {
-      label: "Khách Hàng",
+      label: t("sidebar.customers"),
       icon: "pi pi-fw pi-user",
       className: matchRoutes(
         [
@@ -37,7 +39,7 @@ const SidebarMenu = () => {
       },
     },
     {
-      label: "Phụ tùng",
+      label: t("sidebar.sparePart"),
       icon: "pi pi-fw pi-box",
       className: matchRoutes([{ path: "/app/spare-part" }], location)
         ? "surface-hover"
@@ -47,7 +49,7 @@ const SidebarMenu = () => {
       },
     },
     {
-      label: "Chu kỳ bảo dưỡng",
+      label: t("sidebar.maintainanceCycles"),
       icon: "pi pi-fw pi-car",
       className: matchRoutes(
         [
@@ -64,7 +66,7 @@ const SidebarMenu = () => {
       },
     },
     {
-      label: "Phiếu bảo dưỡng / sửa chữa",
+      label: t("sidebar.repair"),
       icon: "pi pi-fw pi-cog",
       className: matchRoutes(
         [

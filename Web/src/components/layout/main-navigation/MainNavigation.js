@@ -1,5 +1,6 @@
 import { useRef } from 'react';
 import { useDispatch, useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
 import { Menubar } from "primereact/menubar";
 import { Menu } from 'primereact/menu';
 import { uiActions } from "../../../store/ui-slice";
@@ -14,24 +15,44 @@ function MainNavigation() {
   const dispatch = useDispatch();
   const fullName = useSelector((state) => state.auth.fullName);
 
+  const { t, i18n } = useTranslation();
+
   const toggleSlidebarMenu = () => {
     dispatch(uiActions.toggleSlidebar());
   };
 
+  const changeLanguage = (lang) => {
+    i18n.changeLanguage(lang);
+    localStorage.setItem("lang", lang);
+  };
+
   const menuItems = [
     {
-        label: 'Tài khoản',
-        items: [
-            {
-                label: 'Đổi mật khẩu',
-                icon: 'pi pi-user-edit',
-                command: () => {
-                    dispatch(uiActions.showChangePasswordDialog(true));
-                }
-            },
-        ]
+      label: t("menu.account"),
+      items: [
+        {
+          label: t("menu.changePassword"),
+          icon: "pi pi-user-edit",
+          command: () => {
+            dispatch(uiActions.showChangePasswordDialog(true));
+          },
+        },
+      ],
     },
-];
+    {
+      label: t("menu.language"),
+      items: [
+        {
+          label: t("language.en"),
+          command: () => changeLanguage("en"),
+        },
+        {
+          label: t("language.vi"),
+          command: () => changeLanguage("vi"),
+        },
+      ],
+    },
+  ];
 
   const start = (
     <Fragment>

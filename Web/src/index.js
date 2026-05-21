@@ -6,6 +6,8 @@ import { authActions } from "./store/auth-slice";
 import { includes } from "lodash";
 import store from "./store/index";
 import "./index.css";
+import "./i18n";
+import i18n from "./i18n";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import axios from "axios";
@@ -48,8 +50,8 @@ axios.interceptors.response.use(
         store.dispatch(
           uiActions.setToastContent({
             severity: "success",
-            summary: "Success Message",
-            detail: "Lưu thành công!",
+            summary: i18n.t("toast.successSummary"),
+            detail: i18n.t("toast.successDetail"),
           })
         );
       }
@@ -57,7 +59,7 @@ axios.interceptors.response.use(
       store.dispatch(
         uiActions.setToastContent({
           severity: "error",
-          summary: "Error Message",
+          summary: i18n.t("toast.errorSummary"),
           detail: response.data.Message,
         })
       );
@@ -88,7 +90,7 @@ axios.interceptors.response.use(
       store.dispatch(
         uiActions.setToastContent({
           severity: "error",
-          summary: "Error Message!",
+          summary: i18n.t("toast.errorSummary"),
           detail: Message,
         })
       );

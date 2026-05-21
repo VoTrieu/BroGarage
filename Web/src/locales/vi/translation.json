@@ -1,0 +1,30 @@
+{
+  "language": {
+    "en": "English",
+    "vi": "Tiếng Việt"
+  },
+  "menu": {
+    "account": "Tài khoản",
+    "changePassword": "Đổi mật khẩu",
+    "language": "Ngôn ngữ"
+  },
+  "toast": {
+    "successSummary": "Thông báo thành công",
+    "successDetail": "Lưu thành công!",
+    "errorSummary": "Thông báo lỗi"
+  },
+  "login": {
+    "username": "Tên người dùng",
+    "password": "Mật khẩu",
+    "usernameRequired": "Tên người dùng không được để trống!",
+    "passwordRequired": "Mật khẩu không được để trống!",
+    "button": "Đăng nhập"
+  },
+  "sidebar": {
+    "home": "Trang Chủ",
+    "customers": "Khách Hàng",
+    "sparePart": "Phụ tùng",
+    "maintainanceCycles": "Chu kỳ bảo dưỡng",
+    "repair": "Phiếu bảo dưỡng / sửa chữa"
+  }
+}

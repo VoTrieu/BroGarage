@@ -1,5 +1,6 @@
 import { Fragment, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
 import { useForm, Controller } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
@@ -16,6 +17,7 @@ import { Card } from "primereact/card";
 const LoginPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const { errorMessage, loginSuccess, isTokenValid } = useSelector(
     (state) => state.auth
   );
@@ -81,11 +83,11 @@ const LoginPage = () => {
             className="formgrid grid"
           >
             <div className="field col-12 p-fluid">
-              <label htmlFor="UserName">Tên người dùng</label>
+              <label htmlFor="UserName">{t("login.username")}</label>
               <Controller
                 name="UserName"
                 control={control}
-                rules={{ required: "Tên người dùng không được để trống!" }}
+                rules={{ required: t("login.usernameRequired") }}
                 render={({ field, fieldState }) => (
                   <InputText
                     id={field.name}
@@ -101,11 +103,11 @@ const LoginPage = () => {
             </div>
 
             <div className="field col-12 p-fluid">
-              <label htmlFor="Password">Mật khẩu</label>
+              <label htmlFor="Password">{t("login.password")}</label>
               <Controller
                 name="Password"
                 control={control}
-                rules={{ required: "Mật khẩu không được để trống!" }}
+                rules={{ required: t("login.passwordRequired") }}
                 render={({ field, fieldState }) => (
                   <Password
                     id={field.name}
@@ -123,7 +125,7 @@ const LoginPage = () => {
             <div className="flex w-full justify-content-end mr-2">
               <Button
                 disabled={isShowSpinner}
-                label="Đăng nhập"
+                label={t("login.button")}
                 icon="pi pi-check"
                 className="p-button-success"
               />

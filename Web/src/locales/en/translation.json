@@ -1,0 +1,30 @@
+{
+  "language": {
+    "en": "English",
+    "vi": "Vietnamese"
+  },
+  "menu": {
+    "account": "Account",
+    "changePassword": "Change Password",
+    "language": "Language"
+  },
+  "toast": {
+    "successSummary": "Success Message",
+    "successDetail": "Saved successfully!",
+    "errorSummary": "Error Message"
+  },
+  "login": {
+    "username": "Username",
+    "password": "Password",
+    "usernameRequired": "Username is required!",
+    "passwordRequired": "Password is required!",
+    "button": "Login"
+  },
+  "sidebar": {
+    "home": "Home",
+    "customers": "Customers",
+    "sparePart": "Spare Parts",
+    "maintainanceCycles": "Maintenance Cycles",
+    "repair": "Repair / Service"
+  }
+}
