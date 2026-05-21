@@ -1,0 +1,46 @@
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+.git-backup/
+Web/.git-backup/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# .NET
+[Bb]in/
+[Oo]bj/
+.vs/
+TestResults/
+*.nupkg
+
+# ASP.NET local configuration
+API/appsettings.Local.json
+API/appsettings.*.Local.json
+
+# React / Node
+Web/node_modules/
+Web/build/
+Web/coverage/
+Web/.pnp/
+Web/.pnp.js
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+Web/.env
+Web/.env.*
+!Web/.env.example
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Docker / local data
+.docker/
+docker-data/

@@ -1,0 +1,6 @@
+@BroGarage.API_HostAddress = http://localhost:5100
+
+GET {{BroGarage.API_HostAddress}}/customer-type/get-all
+Accept: application/json
+
+###

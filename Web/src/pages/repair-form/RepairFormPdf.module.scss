@@ -1,0 +1,39 @@
+.pdf_font_size {
+  font-size: 0.6rem !important;
+  .p-component{
+    font-size: 0.6rem !important;
+  }
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 15mm;
+  }
+
+  .pdf_container {
+    font-size: 0.9em;
+    color: #1e2a28;
+    width: 740px;
+    margin: 0;
+    padding: 0;
+    textarea {
+      resize: none;
+    }
+  }
+
+  table {
+    th {
+      background-color: var(--surface-400) !important;
+      color: black !important;
+      div{
+        display: initial !important;
+      }
+    }
+  
+    tfoot {
+      display: table-row-group;
+    }
+  }
+}
+
