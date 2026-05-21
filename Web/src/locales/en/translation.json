@@ -25,6 +25,233 @@
     "customers": "Customers",
     "sparePart": "Spare Parts",
     "maintainanceCycles": "Maintenance Cycles",
-    "repair": "Repair / Service"
+    "repair": "Repair / Service",
+    "report": "Report"
+  },
+  "common": {
+    "addNew": "Add New",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "save": "Save",
+    "confirm": "Confirm",
+    "search": "Search...",
+    "exportExcel": "Export Excel File",
+    "yes": "Yes",
+    "no": "No",
+    "keywordPlaceholder": "Type keyword",
+    "enterPageTooltip": "Press Enter to go to this page.",
+    "paymentCash": "Cash",
+    "paymentTransfer": "Bank Transfer",
+    "selectPaymentMethod": "Select Payment Method"
+  },
+  "table": {
+    "licensePlate": "License Plate",
+    "manufacturer": "Manufacturer",
+    "carType": "Car Type",
+    "yearOfManufacture": "Year of Manufacture",
+    "vin": "VIN",
+    "note": "Note",
+    "brand": "Brand",
+    "productCode": "Spare Part Code",
+    "description": "Description",
+    "quantity": "Quantity",
+    "unit": "Unit",
+    "unitPrice": "Unit Price",
+    "total": "Total",
+    "hide": "Hide",
+    "search": "Search",
+    "details": "Details",
+    "customerName": "Customer Name",
+    "status": "Status",
+    "createdDate": "Created Date",
+    "orderCode": "Order Code"
+  },
+  "dashboard": {
+    "searchInfo": "Search Information"
+  },
+  "customer": {
+    "title": "Customers",
+    "customer": "Customer",
+    "personal": "Individual",
+    "enterprise": "Enterprise",
+    "fullName": "Full Name",
+    "type": "Customer Type",
+    "phone": "Phone Number",
+    "email": "Email",
+    "address": "Address",
+    "taxCode": "Tax Code",
+    "representative": "Representative",
+    "saveSuccess": "Customer saved successfully",
+    "customerRequired": "Customer is required!",
+    "typeRequired": "Customer type is required!",
+    "phoneRequired": "Phone number is required!",
+    "phoneInvalid": "Phone number is invalid!",
+    "emailInvalid": "Invalid email address. E.g. example@email.com",
+    "selectCustomerType": "Select Customer Type"
+  },
+  "sparePart": {
+    "title": "Spare Parts",
+    "detailTitle": "Spare Part Details",
+    "productCode": "Spare Part Code",
+    "description": "Description",
+    "quantity": "Quantity",
+    "unitName": "Unit",
+    "unitPrice": "Unit Price",
+    "stockQuantity": "Stock Quantity",
+    "note": "Note",
+    "hideProduct": "Hide",
+    "addNew": "Add Spare Part",
+    "selectUnit": "Select Unit",
+    "unitNameRequired": "Unit is required!"
+  },
+
+  "units": {
+    "box": "Box",
+    "piece": "Piece",
+    "liter": "Liter",
+    "kg": "Kg",
+    "bottle": "Bottle",
+    "set": "Set",
+    "can": "Can"
+  },
+  "repairForm": {
+    "title": "Repair / Service",
+    "orderCode": "Order Number",
+    "licensePlate": "License Plate",
+    "manufacturer": "Manufacturer",
+    "carType": "Car Type",
+    "customerName": "Customer Name",
+    "status": "Status",
+    "createdDate": "Created Date",
+    "type": "Repair Type",
+    "sparePartCode": "Spare Part Code",
+    "description": "Description",
+    "quantity": "Quantity",
+    "unit": "Unit",
+    "unitPrice": "Unit Price",
+    "confirm": "Confirm",
+    "paymentMethod": "Payment Method",
+    "diagnosis": "Diagnosis",
+    "repairCost": "Repair Cost",
+    "customerNote": "Customer Note",
+    "repairInfo": "Repair Information",
+    "vehicleInfo": "Vehicle and Customer Information",
+    "costNote": "Repair spare part cost",
+    "invoice": "Invoice",
+    "statusRequired": "Status is required!",
+    "repairTypeRequired": "Repair type is required!",
+    "currentOdoRequired": "Current ODO is required!",
+    "odoUnitRequired": "ODO unit is required!",
+    "expectedDeliveryDateRequired": "Expected delivery date is required!",
+    "quotationExpiryRequired": "Quotation expiry date is required!",
+    "paymentMethodRequired": "Payment method is required!",
+    "diagnosisRequired": "Diagnosis is required!",
+    "licensePlateRequired": "License plate is required!"
+    ,"currentOdo": "Current ODO"
+    ,"odoNext": "Next maintenance ODO"
+    ,"actualDeliveryDate": "Actual Delivery Date"
+    ,"advancePayment": "Advance Payment"
+    ,"discount": "Discount"
+    ,"expectedDeliveryDate": "Expected Delivery Date"
+    ,"customerNote": "Customer Note"
+  },
+  "report": {
+    "title": "Repair / Service",
+    "orderCode": "Order Code",
+    "licensePlate": "License Plate",
+    "manufacturer": "Manufacturer",
+    "carType": "Car Type",
+    "customerName": "Customer Name",
+    "status": "Status",
+    "createdDate": "Created Date",
+    "searchInfo": "Search Information",
+    "search": "Search",
+    "reset": "Reset",
+    "report": "Report"
+    ,"required": "{{field}} is required!"
+    ,"dateRangeFromInvalid": "{{field}} from date cannot be greater than {{field}} to date!"
+    ,"dateRangeToInvalid": "{{field}} to date cannot be less than {{field}} from date!"
+    ,"dateIn": "Date In"
+    ,"dateInFrom": "Date In From"
+    ,"dateInTo": "Date In To"
+    ,"dateOut": "Date Out"
+    ,"dateOutFrom": "Date Out From"
+    ,"dateOutTo": "Date Out To"
+  },
+  "maintainanceCycle": {
+    "title": "Maintenance Cycles",
+    "carInfo": "Vehicle Information",
+    "spareParts": "Spare Parts",
+    "manufacturer": "Manufacturer",
+    "carType": "Car Type",
+    "yearFrom": "Year From",
+    "yearTo": "Year To",
+    "note": "Note",
+    "sparePartCode": "Spare Part Code",
+    "description": "Description",
+    "quantity": "Quantity",
+    "unit": "Unit",
+    "unitPrice": "Unit Price",
+    "saveSuccess": "Maintenance cycle saved successfully",
+    "manufacturerRequired": "Manufacturer is required!",
+    "carTypeRequired": "Car type is required!",
+    "yearFromRequired": "Year from is required!",
+    "yearToRequired": "Year to is required!",
+    "fieldRequired": "{{field}} is required!",
+    "dateRangeFromInvalid": "{{field}} from cannot be greater than {{field}} to!",
+    "dateRangeToInvalid": "{{field}} to cannot be less than {{field}} from!"
+  },
+  "pdf": {
+    "quotation": "QUOTATION",
+    "invoice": "REPAIR SETTLEMENT",
+    "subtotalA": "Subtotal (A)",
+    "discountB": "Discount ({{discount}}%) (B)",
+    "taxC": "VAT (10%) (C)",
+    "advancePaymentD": "Advance Payment (D)",
+    "grandTotal": "Grand Total (A-B+C-D)",
+    "date": "Date {{date}}",
+    "orderNumber": "Order Number:",
+    "customerName": "Customer",
+    "representative": "Representative",
+    "taxCode": "Tax Code",
+    "address": "Address",
+    "phoneNumber": "Phone",
+    "email": "Email",
+    "customerInfo": "Customer Information",
+    "companyName": "Xuan Lam Auto Repair Service Co., Ltd.",
+    "companyAddress": "36 Street No. 2, Tan Thanh Ward, Tan Phu District, Ho Chi Minh City",
+    "hotline": "Hotline",
+    "taxNumber": "Tax Number",
+    "bankAccount": "Bank Account",
+    "bankBranch": "Bank Branch",
+    "workContent": "Work content / Spare part name",
+    "unit": "Unit",
+    "quantity": "Quantity",
+    "unitPrice": "Unit Price",
+    "amount": "Amount",
+    "confirmation": "CUSTOMER CONFIRMATION"
+    ,"vehicleInfo": "Vehicle Information"
+    ,"garageConfirmation": "GARAGE CONFIRMATION"
+    ,"customerConfirmation": "CUSTOMER CONFIRMATION"
+    ,"warrantyNote": "Spare parts are warranted for 6 months or 10,000 km, whichever comes first.",
+    "quotationExpiryNote": "Quotation is valid for 15 days from the quotation date."
+    ,"signature": "(Sign & Name)"
+  },
+  "dropdown": {
+    "selectRepairType": "Select repair type",
+    "selectStatus": "Select status"
+  },
+  "autocomplete": {
+    "keywordPlaceholder": "Type keyword"
+  },
+  "account": {
+    "currentPassword": "Current Password",
+    "newPassword": "New Password",
+    "confirmNewPassword": "Confirm New Password",
+    "currentPasswordRequired": "Current password is required!",
+    "newPasswordRequired": "New password is required!",
+    "newPasswordMatch": "New password does not match!",
+    "changePassword": "Change Password",
+    "confirmNewPasswordRequired": "Confirm new password is required!"
   }
 }

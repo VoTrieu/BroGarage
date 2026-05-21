@@ -25,6 +25,232 @@
     "customers": "Khách Hàng",
     "sparePart": "Phụ tùng",
     "maintainanceCycles": "Chu kỳ bảo dưỡng",
-    "repair": "Phiếu bảo dưỡng / sửa chữa"
+    "repair": "Phiếu bảo dưỡng / sửa chữa",
+    "report": "Báo cáo"
+  },
+  "common": {
+    "addNew": "Thêm mới",
+    "cancel": "Huỷ",
+    "delete": "Xoá",
+    "save": "Lưu",
+    "confirm": "Xác nhận",
+    "search": "Tìm kiếm...",
+    "exportExcel": "Xuất Excel File",
+    "yes": "Có",
+    "no": "Không",
+    "keywordPlaceholder": "Nhập từ khoá",
+    "enterPageTooltip": "Nhấn phím 'Enter' để đi tới trang này.",
+    "paymentCash": "Tiền mặt",
+    "paymentTransfer": "Chuyển khoản",
+    "selectPaymentMethod": "Chọn hình thanh toán"
+  },
+  "table": {
+    "licensePlate": "Biển số xe",
+    "manufacturer": "Hãng xe",
+    "carType": "Dòng xe",
+    "yearOfManufacture": "Năm sản xuất",
+    "vin": "VIN",
+    "note": "Ghi chú",
+    "brand": "Hãng xe",
+    "productCode": "Mã phụ tùng",
+    "description": "Mô tả",
+    "quantity": "Số lượng",
+    "unit": "Đơn vị tính",
+    "unitPrice": "Đơn giá",
+    "total": "Tổng",
+    "hide": "Ẩn",
+    "search": "Tìm kiếm",
+    "details": "Chi tiết",
+    "customerName": "Tên khách hàng",
+    "status": "Trạng thái",
+    "createdDate": "Ngày lập phiếu",
+    "orderCode": "Mã phiếu"
+  },
+  "dashboard": {
+    "searchInfo": "Thông tin tìm kiếm"
+  },
+  "customer": {
+    "title": "Khách hàng",
+    "customer": "Khách Hàng",
+    "personal": "Cá nhân",
+    "enterprise": "Doanh nghiệp",
+    "fullName": "Tên khách hàng",
+    "type": "Loại khách hàng",
+    "phone": "Số điện thoại",
+    "email": "Email",
+    "address": "Địa chỉ",
+    "taxCode": "Mã số thuế",
+    "representative": "Người đại diện",
+    "saveSuccess": "Lưu khách hàng thành công",
+    "customerRequired": "Tên khách hàng không được để trống!",
+    "typeRequired": "Loại khách hàng không được để trống!",
+    "phoneRequired": "Số điện thoại không được để trống!",
+    "phoneInvalid": "Số điện thoại không hợp lệ!",
+    "emailInvalid": "Email không hợp lệ. E.g. example@email.com",
+    "selectCustomerType": "Chọn Loại Khách Hàng"
+  },
+  "sparePart": {
+    "title": "Phụ Tùng",
+    "detailTitle": "Chi tiết phụ tùng",
+    "productCode": "Mã phụ tùng",
+    "description": "Mô tả",
+    "quantity": "Số lượng",
+    "unitName": "Đơn vị tính",
+    "unitPrice": "Đơn giá",
+    "stockQuantity": "Số lượng tồn kho",
+    "note": "Ghi chú",
+    "hideProduct": "Ẩn",
+    "addNew": "Thêm mới phụ tùng",
+    "selectUnit": "Chọn đơn vị tính",
+    "productCodeRequired": "Mã phụ tùng không được để trống.",
+    "descriptionRequired": "Mô tả không được để trống.",
+    "unitPriceRequired": "Đơn giá không được để trống.",
+    "unitNameRequired": "Đơn vị tính không được để trống!",
+    "quantityRequired": "Số lượng không được để trống."
+  },
+
+  "units": {
+    "box": "Hộp",
+    "piece": "Cái",
+    "liter": "Lít",
+    "kg": "Kg",
+    "bottle": "Chai",
+    "set": "Bộ",
+    "can": "Can"
+  },
+  "repairForm": {
+    "title": "Phiếu bảo dưỡng / sửa chữa",
+    "orderCode": "Số phiếu",
+    "licensePlate": "Biển số",
+    "manufacturer": "Hãng xe",
+    "carType": "Dòng xe",
+    "customerName": "Tên khách hàng",
+    "status": "Trạng thái",
+    "createdDate": "Ngày lập phiếu",
+    "type": "Loại phiếu",
+    "sparePartCode": "Mã phụ tùng",
+    "description": "Mô tả",
+    "quantity": "Số lượng",
+    "unit": "Đơn vị tính",
+    "unitPrice": "Đơn giá",
+    "confirm": "Xác nhận",
+    "paymentMethod": "Hình thanh toán",
+    "diagnosis": "Chuẩn đoán",
+    "repairCost": "Chi phí phụ tùng sửa chữa",
+    "customerNote": "Ghi chú khách hàng",
+    "repairInfo": "Thông tin phiếu",
+    "vehicleInfo": "Thông tin xe và khách hàng",
+    "currentOdoRequired": "Số ODO hiện tại không được để trống!",
+    "odoUnitRequired": "Đơn vị ODO không được để trống!",
+    "expectedDeliveryDateRequired": "Ngày dự kiến giao xe không được để trống!",
+    "quotationExpiryRequired": "Thời hạn báo giá không được để trống!",
+    "paymentMethodRequired": "Hình thanh toán không được để trống!",
+    "diagnosisRequired": "Chuẩn đoán không được để trống!",
+    "licensePlateRequired": "Biển số xe không được để trống!"
+    ,"currentOdo": "Số ODO hiện tại"
+    ,"odoNext": "Số ODO lần bảo dưỡng kế tiếp"
+    ,"actualDeliveryDate": "Ngày giao xe thực tế"
+    ,"advancePayment": "Tạm ứng"
+    ,"discount": "Chiết khấu"
+    ,"expectedDeliveryDate": "Ngày dự kiến giao xe"
+    ,"customerNote": "Ghi chú khách hàng"
+  },
+  "report": {
+    "title": "Phiếu bảo dưỡng / sửa chữa",
+    "orderCode": "Mã phiếu",
+    "licensePlate": "Biển số",
+    "manufacturer": "Hãng xe",
+    "carType": "Dòng xe",
+    "customerName": "Tên khách hàng",
+    "status": "Trạng thái",
+    "createdDate": "Ngày lập phiếu",
+    "searchInfo": "Thông tin tìm kiếm",
+    "search": "Tìm kiếm",
+    "reset": "Xoá",
+    "report": "Báo cáo"
+    ,"required": "{{field}} không được để trống"
+    ,"dateRangeFromInvalid": "{{field}} từ không thể lớn hơn {{field}} đến!"
+    ,"dateRangeToInvalid": "{{field}} đến không thể nhỏ hơn {{field}} từ!"
+    ,"dateIn": "Ngày vào"
+    ,"dateInFrom": "Ngày vào từ"
+    ,"dateInTo": "Ngày vào đến"
+    ,"dateOut": "Ngày ra"
+    ,"dateOutFrom": "Ngày ra từ"
+    ,"dateOutTo": "Ngày ra đến"
+  },
+  "maintainanceCycle": {
+    "title": "Chu kỳ bảo dưỡng",
+    "carInfo": "Thông tin xe",
+    "spareParts": "Phụ tùng",
+    "manufacturer": "Hãng xe",
+    "carType": "Dòng xe",
+    "yearFrom": "Năm sản xuất từ",
+    "yearTo": "Năm sản xuất đến",
+    "note": "Ghi chú",
+    "sparePartCode": "Mã phụ tùng",
+    "description": "Mô tả",
+    "quantity": "Số lượng",
+    "unit": "Đơn vị tính",
+    "unitPrice": "Đơn giá",
+    "manufacturerRequired": "Hãng xe không được để trống!",
+    "carTypeRequired": "Dòng xe không được để trống!",
+    "yearFromRequired": "Năm sản xuất từ không được để trống!",
+    "yearToRequired": "Năm sản xuất đến không được để trống!"
+    ,"fieldRequired": "{{field}} không được để trống",
+    "dateRangeFromInvalid": "{{field}} từ không thể lớn hơn {{field}} đến!",
+    "dateRangeToInvalid": "{{field}} đến không thể nhỏ hơn {{field}} từ!"
+  },
+  "pdf": {
+    "quotation": "PHIẾU BÁO GIÁ",
+    "invoice": "QUYẾT TOÁN SỬA CHỮA",
+    "subtotalA": "Cộng (A)",
+    "discountB": "Chiết khấu ({{discount}}%) (B)",
+    "taxC": "Thuế GTGT (10%) (C)",
+    "advancePaymentD": "Tạm ứng (D)",
+    "grandTotal": "Tổng cộng (A-B+C-D)",
+    "date": "Ngày {{date}}",
+    "orderNumber": "Số phiếu:",
+    "customerName": "Khách hàng",
+    "representative": "Người đại diện",
+    "taxCode": "Mã số thuế",
+    "address": "Địa chỉ",
+    "phoneNumber": "Điện thoại liên lạc",
+    "email": "Email",
+    "customerInfo": "Thông tin khách hàng",
+    "companyName": "CÔNG TY TNHH DỊCH VỤ SỮA CHỮA Ô TÔ XUÂN LAM",
+    "companyAddress": "36 Đường số 2, Phường Tân Thành, Quận Tân Phú, TPHCM",
+    "hotline": "Hotline",
+    "taxNumber": "Mã số thuế",
+    "bankAccount": "Số tài khoản",
+    "bankBranch": "Chi nhánh ngân hàng",
+    "workContent": "Nội dung công việc / Tên phụ tùng",
+    "unit": "Đơn vị tính",
+    "quantity": "Số lượng",
+    "unitPrice": "Đơn giá",
+    "amount": "Thành tiền",
+    "confirmation": "XÁC NHẬN KHÁCH HÀNG"
+    ,"vehicleInfo": "Thông tin xe",
+    "garageConfirmation": "XÁC NHẬN GARAGE",
+    "customerConfirmation": "XÁC NHẬN KHÁCH HÀNG",
+    "warrantyNote": "Phụ tùng thay thế được bảo hành 6 tháng hoặc 10.000 km tùy điều kiện nào đến trước.",
+    "quotationExpiryNote": "Báo giá có thời hạn trong 15 ngày kể từ ngày báo giá."
+    ,"signature": "(Ký họ tên)"
+  },
+  "dropdown": {
+    "selectRepairType": "Chọn loại phiếu",
+    "selectStatus": "Chọn tình trạng"
+  },
+  "autocomplete": {
+    "keywordPlaceholder": "Nhập từ khoá"
+  },
+  "account": {
+    "currentPassword": "Mật khẩu hiện tại",
+    "newPassword": "Mật khẩu mới",
+    "confirmNewPassword": "Xác nhận mật khẩu mới",
+    "currentPasswordRequired": "Mật khẩu hiện tại không được để trống!",
+    "newPasswordRequired": "Mật khẩu mới không được để trống!",
+    "newPasswordMatch": "Mật khẩu mới không trùng khớp!",
+    "changePassword": "Đổi mật khẩu",
+    "confirmNewPasswordRequired": "Xác nhận mật khẩu không được để trống!"
   }
 }

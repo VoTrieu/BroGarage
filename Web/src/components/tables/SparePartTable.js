@@ -1,4 +1,5 @@
 import { Fragment, useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { Button } from "primereact/button";
@@ -14,6 +15,7 @@ import { sumBy, findIndex } from "lodash";
 import { getSparePart } from "../../services/spare-part-service";
 
 const SparePartTable = (props) => {
+  const { t } = useTranslation();
   const [spareParts, setSpareParts] = useState([]);
   const [submitted, setSubmitted] = useState(false);
   const [isShowDeleteDialog, setIsShowDeleteDialog] = useState(false);
@@ -135,7 +137,7 @@ const SparePartTable = (props) => {
     <div className="table-header flex justify-content-end">
       <span className="p-input-icon-left">
         <Button
-          label="Thêm mới"
+          label={t("common.addNew")}
           icon="pi pi-plus"
           className="p-button-success"
           onClick={onCreateNewSparePart}
@@ -164,13 +166,13 @@ const SparePartTable = (props) => {
   const deleteDialogFooter = (
     <Fragment>
       <Button
-        label="Huỷ"
+        label={t("common.cancel")}
         icon="pi pi-times"
         className="p-button-text"
         onClick={() => setIsShowDeleteDialog(false)}
       />
       <Button
-        label="Xoá"
+        label={t("common.delete")}
         icon="pi pi-check"
         className="p-button-text"
         onClick={onDeleteSparePart}
@@ -181,13 +183,13 @@ const SparePartTable = (props) => {
   const detailDialogFooter = (
     <Fragment>
       <Button
-        label="Huỷ"
+        label={t("common.cancel")}
         icon="pi pi-times"
         className="p-button-text"
         onClick={() => setIsShowDetailDialog(false)}
       />
       <Button
-        label="Lưu"
+        label={t("common.save")}
         icon="pi pi-check"
         className="p-button-text"
         onClick={onSaveSparePart}
@@ -269,11 +271,11 @@ const SparePartTable = (props) => {
   const titleFooterTemplate = () => {
     return (
       <Fragment>
-        <div className="py-2">Cộng (A)</div>
-        <div className="py-2">Chiếc khấu {discountPercent || 0}% (B)</div>
-        <div className="py-2">Thuế GTGT (10%) (C)</div>
-        <div className="py-2">Tạm ứng (D)</div>
-        <div className="py-2">Tổng cộng (A-B+C-D)</div>
+        <div className="py-2">{t("sparePart.subtotal")}</div>
+        <div className="py-2">{t("sparePart.discount", { percent: discountPercent || 0 })}</div>
+        <div className="py-2">{t("sparePart.tax")}</div>
+        <div className="py-2">{t("sparePart.advancePayment")}</div>
+        <div className="py-2">{t("sparePart.totalFooter")}</div>
       </Fragment>
     );
   };
@@ -289,36 +291,36 @@ const SparePartTable = (props) => {
         editMode="row"
         stripedRows
       >
-        <Column field="ProductCode" header="Mã phụ tùng"></Column>
-        <Column field="ProductName" header="Mô tả"></Column>
-        <Column field="Quantity" header="Số lượng"></Column>
-        <Column field="UnitName" header="Đơn vị tính"></Column>
+        <Column field="ProductCode" header={t("table.productCode")}></Column>
+        <Column field="ProductName" header={t("table.description")}></Column>
+        <Column field="Quantity" header={t("table.quantity")}></Column>
+        <Column field="UnitName" header={t("table.unit")}></Column>
         {isRepairForm && (
           <Column
             field="HideProduct"
             body={hideProductBodyTemplate}
-            header="Ẩn"
+            header={t("table.hide")}
           ></Column>
         )}
         <Column
           field="UnitPrice"
-          header="Đơn giá"
+          header={t("table.unitPrice")}
           body={priceBodyTemplate}
           footer={titleFooterTemplate}
         ></Column>
         <Column
-          header="Tổng"
+          header={t("table.total")}
           body={totalPriceBodyTemplate}
           footer={totalFooterTemplate}
         ></Column>
-        {isRepairForm && <Column field="Comment" header="Ghi Chú"></Column>}
+        {isRepairForm && <Column field="Comment" header={t("table.note")}></Column>}
         <Column body={actionBodyTemplate} exportable={false}></Column>
       </DataTable>
 
       <Dialog
         visible={isShowDeleteDialog}
         style={{ width: "450px" }}
-        header="Xác nhận"
+        header={t("common.confirm")}
         modal
         footer={deleteDialogFooter}
         onHide={() => setIsShowDeleteDialog(false)}
@@ -330,7 +332,7 @@ const SparePartTable = (props) => {
           />
           {selectedSparePart && (
             <span>
-              Bạn muốn xoá phụ tùng <b>{selectedSparePart.ProductCode}</b>?
+              {t("sparePart.deleteConfirmation")} <b>{selectedSparePart.ProductCode}</b>?
             </span>
           )}
         </div>
@@ -339,7 +341,7 @@ const SparePartTable = (props) => {
       <Dialog
         visible={isShowDetailDialog}
         style={{ width: "450px" }}
-        header="Thông tin phụ tùng"
+        header={t("sparePart.detailTitle")}
         modal
         className="p-fluid"
         footer={detailDialogFooter}
@@ -347,7 +349,7 @@ const SparePartTable = (props) => {
       >
         <div className="field">
           <label htmlFor="aucpProductCode">
-            Mã phụ tùng <b className="p-error">*</b>
+            {t("sparePart.productCode")} <b className="p-error">*</b>
           </label>
           <AutoComplete
             id="aucpProductCode"
@@ -360,7 +362,7 @@ const SparePartTable = (props) => {
             autoFocus
             itemTemplate={itemTemplate}
             onChange={(e) => onSparePartCodeChange(e.value)}
-            placeholder="Nhập từ khoá"
+            placeholder={t("autocomplete.keywordPlaceholder")}
             dropdownarialabel="Select SparePart"
             className={classNames({
               "p-invalid": submitted && !selectedSparePart.ProductCode,
@@ -368,12 +370,12 @@ const SparePartTable = (props) => {
           />
 
           {submitted && !selectedSparePart.ProductCode && (
-            <small className="p-error">Mã phụ tùng không được để trống.</small>
+            <small className="p-error">{t("sparePart.productCodeRequired")}</small>
           )}
         </div>
 
         <div className="field">
-          <label htmlFor="txtProductName">Mô tả</label>
+          <label htmlFor="txtProductName">{t("table.description")}</label>
           <InputText
             id="txtProductName"
             value={selectedSparePart.ProductName || ""}
@@ -383,7 +385,7 @@ const SparePartTable = (props) => {
 
         <div className="field">
           <label htmlFor="txtQuantity">
-            Số lượng <b className="p-error">*</b>
+            {t("table.quantity")} <b className="p-error">*</b>
           </label>
           <InputNumber
             id="txtQuantity"
@@ -395,11 +397,11 @@ const SparePartTable = (props) => {
             })}
           />
           {submitted && !selectedSparePart.Quantity && (
-            <small className="p-error">Số lượng không được để trống.</small>
+            <small className="p-error">{t("sparePart.quantityRequired")}</small>
           )}
         </div>
         <div className="field">
-          <label htmlFor="txtUnitName">Đơn vị tính</label>
+          <label htmlFor="txtUnitName">{t("table.unit")}</label>
           <InputText
             id="txtUnitName"
             value={selectedSparePart.UnitName || ""}
@@ -407,7 +409,7 @@ const SparePartTable = (props) => {
           />
         </div>
         <div className="field">
-          <label htmlFor="txtUnitPrice">Đơn giá</label>
+          <label htmlFor="txtUnitPrice">{t("table.unitPrice")}</label>
           <InputText
             id="txtUnitPrice"
             value={formatAmount(selectedSparePart.UnitPrice) || ""}
@@ -417,7 +419,7 @@ const SparePartTable = (props) => {
         {isRepairForm && (
           <Fragment>
             <div className="field">
-              <label htmlFor="txtHideProduct">Ẩn</label>
+              <label htmlFor="txtHideProduct">{t("sparePart.hideProduct")}</label>
               <Checkbox
                 id="txtHideProduct"
                 className="block"
@@ -426,7 +428,7 @@ const SparePartTable = (props) => {
               />
             </div>
             <div className="field">
-              <label htmlFor="txtComment">Ghi Chú</label>
+              <label htmlFor="txtComment">{t("table.note")}</label>
               <InputTextarea
                 id="txtComment"
                 row={5}

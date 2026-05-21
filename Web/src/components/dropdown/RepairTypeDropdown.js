@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { Dropdown } from "primereact/dropdown";
 import { classNames } from "primereact/utils";
 import { getRepairTypes } from "../../services/repair-service";
 
 const RepairTypeDropdown = (props) => {
+  const { t } = useTranslation();
   const [repairTypes, setRepairTypes] = useState(null);
 
   useEffect(() => {
@@ -20,7 +22,7 @@ const RepairTypeDropdown = (props) => {
       options={repairTypes}
       optionLabel="TypeName"
       optionValue="TypeId"
-      placeholder="Chọn loại phiếu"
+      placeholder={t("dropdown.selectRepairType")}
       className={classNames("w-full", {
         "p-invalid": props.fieldState?.error,
       })}

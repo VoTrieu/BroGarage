@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { useForm, Controller } from "react-hook-form";
 import { useParams, useNavigate } from "react-router-dom";
 import ToggleablePanel from "../../components/panels/ToogleablePanel";
@@ -26,6 +27,7 @@ const defaultValues = {
 };
 
 const MaintainanceCycleDetailPage = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const [existedSpareParts, setExistedSpareParts] = useState([]);
   const [carTypes, setCarTypes] = useState();
@@ -86,7 +88,7 @@ const MaintainanceCycleDetailPage = () => {
 
   const functionButtons = [
     {
-      label: "Lưu",
+      label: t("common.save"),
       icon: "pi pi-check",
       disabled: !isDirty || isSubmitting,
       className: "p-button-success",
@@ -140,23 +142,22 @@ const MaintainanceCycleDetailPage = () => {
     if (!value && !compareDate) {
       return true;
     }
-
     if (!value && compareDate) {
-      return `${fieldLabel} không thể để trống`;
+      return t("maintainanceCycle.fieldRequired", { field: fieldLabel });
     }
 
     if (isFromDate && value > compareDate) {
-      return `${fieldLabel} từ không thể lớn hơn ${fieldLabel} đến!`;
+      return t("maintainanceCycle.dateRangeFromInvalid", { field: fieldLabel });
     }
 
     if (!isFromDate && value < compareDate) {
-      return `${fieldLabel} đến không thể nhỏ hơn ${fieldLabel} từ!`;
+      return t("maintainanceCycle.dateRangeToInvalid", { field: fieldLabel });
     }
   };
 
   return (
     <div className="relative h-full pb-8">
-      <ToggleablePanel header="Thông tin xe" className="pb-2" toggleable>
+      <ToggleablePanel header={t("maintainanceCycle.carInfo")} className="pb-2" toggleable>
         <form
           ref={formRef}
           onSubmit={handleSubmit(onSubmit)}
@@ -164,12 +165,12 @@ const MaintainanceCycleDetailPage = () => {
         >
           <div className="field col-12 md:col-4">
             <label htmlFor="ManufaturerId">
-              Hãng xe <b className="p-error">*</b>
+              {t("maintainanceCycle.manufacturer")} <b className="p-error">*</b>
             </label>
             <Controller
               name="ManufaturerId"
               control={control}
-              rules={{ required: "Hãng xe không được để trống!" }}
+              rules={{ required: t("maintainanceCycle.manufacturerRequired") }}
               render={({ field, fieldState }) => (
                 <Dropdown
                   id={field.name}
@@ -181,7 +182,7 @@ const MaintainanceCycleDetailPage = () => {
                   optionLabel="ManufacturerName"
                   optionValue="ManufacturerId"
                   options={manufacturers}
-                  placeholder="Chọn hãng xe"
+                  placeholder={t("common.search")}
                   filter
                   filterBy="ManufacturerName"
                   className={classNames("w-full", {
@@ -195,12 +196,12 @@ const MaintainanceCycleDetailPage = () => {
 
           <div className="field col-12 md:col-4">
             <label htmlFor="CarTypeId">
-              Dòng xe <b className="p-error">*</b>
+              {t("maintainanceCycle.carType")} <b className="p-error">*</b>
             </label>
             <Controller
               name="CarTypeId"
               control={control}
-              rules={{ required: "Dòng xe không được để trống!" }}
+              rules={{ required: t("maintainanceCycle.carTypeRequired") }}
               render={({ field, fieldState }) => (
                 <Dropdown
                   id={field.name}
@@ -209,7 +210,7 @@ const MaintainanceCycleDetailPage = () => {
                   optionLabel="TypeName"
                   optionValue="TypeId"
                   options={carTypes}
-                  placeholder="Chọn dòng xe"
+                  placeholder={t("common.search")}
                   filter
                   filterBy="TypeName"
                   className={classNames("w-full", {
@@ -222,7 +223,7 @@ const MaintainanceCycleDetailPage = () => {
           </div>
 
           <div className="field col-12 md:col-4">
-            <label htmlFor="Note">Ghi Chú</label>
+            <label htmlFor="Note">{t("table.note")}</label>
             <Controller
               name="Note"
               control={control}
@@ -240,20 +241,20 @@ const MaintainanceCycleDetailPage = () => {
 
           <div className="field col-12 md:col-4">
             <label htmlFor="YearOfManufactureFrom">
-              Năm sản xuất từ <b className="p-error">*</b>
+              {t("maintainanceCycle.yearFrom")} <b className="p-error">*</b>
             </label>
             <Controller
               name="YearOfManufactureFrom"
               control={control}
               rules={{
-                required: "Năm sản xuất từ không được để trống!",
+                    required: t("maintainanceCycle.yearFromRequired"),
                 validate: {
                   isDateValid: (value) =>
                     validateFromDateToDate(
                       value,
                       "YearOfManufactureTo",
                       true,
-                      "Năm sản xuất"
+                          t("maintainanceCycle.yearFrom")
                     ),
                 },
               }}
@@ -274,20 +275,20 @@ const MaintainanceCycleDetailPage = () => {
 
           <div className="field col-12 md:col-4">
             <label htmlFor="YearOfManufactureTo">
-              Năm sản xuất đến <b className="p-error">*</b>
+              {t("maintainanceCycle.yearTo")} <b className="p-error">*</b>
             </label>
             <Controller
               name="YearOfManufactureTo"
               control={control}
               rules={{
-                required: "Năm sản xuất đến không được để trống!",
+                    required: t("maintainanceCycle.yearToRequired"),
                 validate: {
                   isDateValid: (value) =>
                     validateFromDateToDate(
                       value,
                       "YearOfManufactureFrom",
                       false,
-                      "Năm sản xuất"
+                          t("maintainanceCycle.yearTo")
                     ),
                 },
               }}
@@ -307,7 +308,7 @@ const MaintainanceCycleDetailPage = () => {
           </div>
         </form>
       </ToggleablePanel>
-      <ToggleablePanel header="Phụ tùng" className="pb-2" toggleable>
+      <ToggleablePanel header={t("maintainanceCycle.spareParts")} className="pb-2" toggleable>
         <SparePartTable
           existedSpareParts={existedSpareParts}
           handleSparePartsChange={onHandleSparePartsChange}

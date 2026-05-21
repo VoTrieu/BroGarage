@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { useForm, Controller } from "react-hook-form";
 import { useParams, useNavigate } from "react-router-dom";
 import ToggleablePanel from "../../components/panels/ToogleablePanel";
@@ -14,16 +15,6 @@ import {
   updateCustomer,
 } from "../../services/customer-service";
 
-const customerTypes = [
-  {
-    label: "Cá nhân",
-    value: 1,
-  },
-  {
-    label: "Doanh nghiệp",
-    value: 2,
-  },
-];
 
 const defaultValues = {
   CustomerId: "",
@@ -37,6 +28,11 @@ const defaultValues = {
 };
 
 const CustomerDetailPage = () => {
+  const { t } = useTranslation();
+  const customerTypes = [
+    { label: t("customer.personal"), value: 1 },
+    { label: t("customer.enterprise"), value: 2 },
+  ];
   const [existedCars, setExistedCars] = useState([]);
   const formRef = useRef();
   const params = useParams();
@@ -64,7 +60,7 @@ const CustomerDetailPage = () => {
 
   const functionButtons = [
     {
-      label: "Lưu",
+      label: t("common.save"),
       icon: "pi pi-check",
       disabled: !isDirty || isSubmitting,
       className: "p-button-success",
@@ -103,7 +99,7 @@ const CustomerDetailPage = () => {
 
   return (
     <div className="relative h-full pb-8">
-      <ToggleablePanel header="Khách Hàng" className="pb-2" toggleable>
+      <ToggleablePanel header={t("customer.customer")} className="pb-2" toggleable>
         <form
           ref={formRef}
           onSubmit={handleSubmit(onSubmit)}
@@ -111,12 +107,12 @@ const CustomerDetailPage = () => {
         >
           <div className="field col-12 md:col-4">
             <label htmlFor="FullName">
-              Tên Khách Hàng <b className="p-error">*</b>
+              {t("customer.fullName")} <b className="p-error">*</b>
             </label>
             <Controller
               name="FullName"
               control={control}
-              rules={{ required: "Tên khách hàng không được để trống!" }}
+              rules={{ required: t("customer.customerRequired") }}
               render={({ field, fieldState }) => (
                 <InputText
                   id={field.name}
@@ -131,12 +127,12 @@ const CustomerDetailPage = () => {
           </div>
           <div className="field col-12 md:col-4">
             <label htmlFor="TypeId">
-              Loại Khách Hàng <b className="p-error">*</b>
+              {t("customer.type")} <b className="p-error">*</b>
             </label>
             <Controller
               name="TypeId"
               control={control}
-              rules={{ required: "Loại khách hàng không được để trống!" }}
+              rules={{ required: t("customer.typeRequired") }}
               render={({ field }) => (
                 <Dropdown
                   id={field.name}
@@ -145,7 +141,7 @@ const CustomerDetailPage = () => {
                   optionLabel="label"
                   options={customerTypes}
                   className="w-full"
-                  placeholder="Chọn Loại Khách Hàng"
+                  placeholder={t("customer.selectCustomerType")}
                 />
               )}
             />
@@ -153,16 +149,16 @@ const CustomerDetailPage = () => {
           </div>
           <div className="field col-12 md:col-4">
             <label htmlFor="PhoneNumber">
-              Số điện thoại <b className="p-error">*</b>
+              {t("customer.phone")} <b className="p-error">*</b>
             </label>
             <Controller
               name="PhoneNumber"
               control={control}
               rules={{
-                required: "Số điện thoại không được để trống!",
+                required: t("customer.phoneRequired"),
                 pattern: {
                   value: /(03|05|07|08|09|01[2|6|8|9])+([0-9]{8})\b/,
-                  message: "Số điện thoại không hợp lệ!",
+                  message: t("customer.phoneInvalid"),
                 },
               }}
               render={({ field, fieldState }) => (
@@ -178,7 +174,7 @@ const CustomerDetailPage = () => {
             {getFormErrorMessage("PhoneNumber")}
           </div>
           <div className="field col-12 md:col-4">
-            <label htmlFor="Representative">Người đại diện</label>
+            <label htmlFor="Representative">{t("customer.representative")}</label>
             <Controller
               name="Representative"
               control={control}
@@ -192,7 +188,7 @@ const CustomerDetailPage = () => {
             />
           </div>
           <div className="field col-12 md:col-4">
-            <label htmlFor="TaxCode">Mã Số Thuế</label>
+            <label htmlFor="TaxCode">{t("customer.taxCode")}</label>
             <Controller
               name="TaxCode"
               control={control}
@@ -206,14 +202,14 @@ const CustomerDetailPage = () => {
             />
           </div>
           <div className="field col-12 md:col-4">
-            <label htmlFor="Email">Email</label>
+            <label htmlFor="Email">{t("customer.email")}</label>
             <Controller
               name="Email"
               control={control}
               rules={{
                 pattern: {
                   value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-                  message: "Email không hợp lệ. E.g. example@email.com",
+                  message: t("customer.emailInvalid"),
                 },
               }}
               render={({ field, fieldState }) => (
@@ -229,7 +225,7 @@ const CustomerDetailPage = () => {
             {getFormErrorMessage("Email")}
           </div>
           <div className="field col-12 md:col-4">
-            <label htmlFor="Address">Địa Chỉ</label>
+            <label htmlFor="Address">{t("customer.address")}</label>
             <Controller
               name="Address"
               control={control}
@@ -245,7 +241,7 @@ const CustomerDetailPage = () => {
             />
           </div>
           <div className="field col-12 md:col-4">
-            <label htmlFor="Note">Ghi Chú</label>
+            <label htmlFor="Note">{t("table.note")}</label>
             <Controller
               name="Note"
               control={control}

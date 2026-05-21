@@ -1,4 +1,5 @@
 import { Fragment, useState, useRef, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { useForm, Controller } from "react-hook-form";
 import { useParams, useNavigate } from "react-router-dom";
 import ToggleablePanel from "../../components/panels/ToogleablePanel";
@@ -53,6 +54,7 @@ const defaultValues = {
 };
 
 const RepairFormDetailPage = () => {
+  const { t } = useTranslation();
 
   const navigate = useNavigate();
   const {
@@ -144,7 +146,7 @@ const RepairFormDetailPage = () => {
 
   const functionButtons = [
     {
-      label: "In Pdf",
+      label: t("repairForm.printPdf"),
       icon: "pi pi-print",
       className: "p-button-success",
       disabled: !selectedRepairFormId || isProcessing.printing,
@@ -161,7 +163,7 @@ const RepairFormDetailPage = () => {
       },
     },
     {
-      label: "Lưu",
+      label: t("common.save"),
       icon: "pi pi-check",
       className: "p-button-success",
       disabled: !isDirty || isProcessing.saving,
@@ -205,10 +207,10 @@ const RepairFormDetailPage = () => {
     <Fragment>
       <div className="relative h-full pb-8">
         <form ref={formRef} onSubmit={handleSubmit(onSubmit)}>
-          <ToggleablePanel header="Thông tin phiếu" className="pb-2" toggleable>
+          <ToggleablePanel header={t("repairForm.repairInfo")} className="pb-2" toggleable>
             <div className="formgrid grid">
               <div className="field col-12 md:col-4">
-                <label htmlFor="OrderId">Số phiếu</label>
+                <label htmlFor="OrderId">{t("repairForm.orderCode")}</label>
                 <InputText
                   value={orderId.current}
                   disabled
@@ -216,7 +218,7 @@ const RepairFormDetailPage = () => {
                 />
               </div>
               <div className="field col-12 md:col-4">
-                <label htmlFor="OrderDate">Ngày lập phiếu</label>
+                <label htmlFor="OrderDate">{t("repairForm.createdDate")}</label>
                 <Controller
                   name="OrderDate"
                   control={control}
@@ -234,12 +236,12 @@ const RepairFormDetailPage = () => {
               </div>
               <div className="field col-12 md:col-4">
                 <label htmlFor="StatusId">
-                  Tình trạng phiếu <b className="p-error">*</b>
+                  {t("repairForm.status")} <b className="p-error">*</b>
                 </label>
                 <Controller
                   name="StatusId"
                   control={control}
-                  rules={{ required: "Tình trạng không được để trống!" }}
+                  rules={{ required: t("repairForm.statusRequired") }}
                   render={({ field, fieldState }) => (
                     <StatusDropdown field={field} fieldState={fieldState} />
                   )}
@@ -248,12 +250,12 @@ const RepairFormDetailPage = () => {
               </div>
               <div className="field col-12 md:col-4">
                 <label htmlFor="TypeId">
-                  Loại phiếu <b className="p-error">*</b>
+                  {t("repairForm.type")} <b className="p-error">*</b>
                 </label>
                 <Controller
                   name="TypeId"
                   control={control}
-                  rules={{ required: "Loại phiếu không được để trống!" }}
+                  rules={{ required: t("repairForm.repairTypeRequired") }}
                   render={({ field, fieldState }) => (
                     <RepairTypeDropdown field={field} fieldState={fieldState} />
                   )}
@@ -262,14 +264,14 @@ const RepairFormDetailPage = () => {
               </div>
               <div className="field col-12 md:col-4">
                 <label htmlFor="ODOCurrent">
-                  Số ODO hiện tại <b className="p-error">*</b>
+                  {t("repairForm.currentOdo")} <b className="p-error">*</b>
                 </label>
 
                 <Controller
                   name="ODOCurrent"
                   control={control}
                   rules={{
-                    required: "Số ODO hiện tại không được để trống!",
+                    required: t("repairForm.currentOdoRequired"),
                     min: 0,
                   }}
                   render={({ field, fieldState }) => (
@@ -293,18 +295,18 @@ const RepairFormDetailPage = () => {
 
               <div className="field col-12 md:col-4">
                 <label htmlFor="ODOUnit">
-                  Đơn vị ODO <b className="p-error">*</b>
+                  {t("repairForm.odoUnit")} <b className="p-error">*</b>
                 </label>
                 <Controller
                   name="ODOUnit"
                   control={control}
-                  rules={{ required: "Đơn vị ODO không được để trống!" }}
+                  rules={{ required: t("repairForm.odoUnitRequired") }}
                   render={({ field, fieldState }) => (
                     <Dropdown
                       id={field.name}
                       {...field}
                       options={["Km", "Miles"]}
-                      placeholder="Chọn đơn vị ODO"
+                      placeholder={t("repairForm.selectOdoUnit")}
                       onSelect={(e) => updateNextODO(e.value)}
                       className={classNames("w-full", {
                         "p-invalid": fieldState.error,
@@ -316,7 +318,7 @@ const RepairFormDetailPage = () => {
               </div>
 
               <div className="field col-12 md:col-4">
-                <label htmlFor="DateIn">Ngày vào</label>
+                <label htmlFor="DateIn">{t("repairForm.dateIn")}</label>
                 <Controller
                   name="DateIn"
                   control={control}
@@ -334,7 +336,7 @@ const RepairFormDetailPage = () => {
               </div>
 
               <div className="field col-12 md:col-4">
-                <label htmlFor="ODONext">Số ODO lần bảo dưỡng kế tiếp</label>
+                <label htmlFor="ODONext">{t("repairForm.odoNext")}</label>
                 <Controller
                   name="ODONext"
                   control={control}
@@ -353,13 +355,13 @@ const RepairFormDetailPage = () => {
 
               <div className="field col-12 md:col-4">
                 <label htmlFor="DateOutEstimated">
-                  Ngày dự kiến giao xe <b className="p-error">*</b>
+                  {t("repairForm.expectedDeliveryDate")} <b className="p-error">*</b>
                 </label>
                 <Controller
                   name="DateOutEstimated"
                   control={control}
                   rules={{
-                    required: "Ngày dự kiến giao xe không được để trống!",
+                    required: t("repairForm.expectedDeliveryDateRequired"),
                   }}
                   render={({ field, fieldState }) => (
                     <Calendar
@@ -377,11 +379,11 @@ const RepairFormDetailPage = () => {
               </div>
 
               <div className="field col-12 md:col-4">
-                <label htmlFor="ExpiredInDate">Thời hạn báo giá</label>
+                <label htmlFor="ExpiredInDate">{t("repairForm.quotationExpiry")}</label>
                 <Controller
                   name="ExpiredInDate"
                   rules={{
-                    required: "Thời hạn báo giá không được để trống!",
+                    required: t("repairForm.quotationExpiryRequired"),
                   }}
                   control={control}
                   render={({ field, fieldState }) => (
@@ -400,7 +402,7 @@ const RepairFormDetailPage = () => {
               </div>
 
               <div className="field col-12 md:col-4">
-                <label htmlFor="AdvancePayment">Tạm ứng</label>
+                <label htmlFor="AdvancePayment">{t("repairForm.advancePayment")}</label>
                 <Controller
                   name="AdvancePayment"
                   control={control}
@@ -425,7 +427,7 @@ const RepairFormDetailPage = () => {
               </div>
 
               <div className="field col-12 md:col-4">
-                <label htmlFor="Discount">Chiết khấu</label>
+                <label htmlFor="Discount">{t("repairForm.discount")}</label>
                 <Controller
                   name="Discount"
                   control={control}
@@ -450,7 +452,7 @@ const RepairFormDetailPage = () => {
               </div>
 
               <div className="field col-12 md:col-4">
-                <label htmlFor="DateOutActual">Ngày giao xe thực tế</label>
+                <label htmlFor="DateOutActual">{t("repairForm.actualDeliveryDate")}</label>
                 <Controller
                   name="DateOutActual"
                   control={control}
@@ -470,12 +472,12 @@ const RepairFormDetailPage = () => {
 
               <div className="field col-12 md:col-4">
                 <label htmlFor="PaymentMethod">
-                  Hình thanh toán <b className="p-error">*</b>
+                  {t("repairForm.paymentMethod")} <b className="p-error">*</b>
                 </label>
                 <Controller
                   name="PaymentMethod"
                   control={control}
-                  rules={{ required: "Hình thanh toán không được để trống!" }}
+                  rules={{ required: t("repairForm.paymentMethodRequired") }}
                   render={({ field, fieldState }) => (
                     <Dropdown
                       id={field.name}
@@ -483,10 +485,10 @@ const RepairFormDetailPage = () => {
                       optionLabel="label"
                       optionValue="id"
                       options={[
-                        { id: "CASH", label: "Tiền mặt" },
-                        { id: "TRANSFER", label: "Chuyển khoản" },
+                        { id: "CASH", label: t("common.paymentCash") },
+                        { id: "TRANSFER", label: t("common.paymentTransfer") },
                       ]}
-                      placeholder="Chọn Hình thanh toán"
+                      placeholder={t("common.selectPaymentMethod")}
                       onSelect={(e) => updateNextODO(e.value)}
                       className={classNames("w-full", {
                         "p-invalid": fieldState.error,
@@ -498,7 +500,7 @@ const RepairFormDetailPage = () => {
               </div>
 
               <div className="field col-12 md:col-4">
-                <label htmlFor="IsInvoice">Xuất hóa đơn GTGT </label>
+                <label htmlFor="IsInvoice">{t("repairForm.invoice")}</label>
                 <Controller
                   name="IsInvoice"
                   control={control}
@@ -519,13 +521,12 @@ const RepairFormDetailPage = () => {
 
               <div className="field col-12 md:col-4">
                 <label htmlFor="Diagnosis">
-                  Chuẩn đoán/tình trạng khi vào xưởng{" "}
-                  <b className="p-error">*</b>
+                  {t("repairForm.diagnosis")} <b className="p-error">*</b>
                 </label>
                 <Controller
                   name="Diagnosis"
                   control={control}
-                  rules={{ required: "Chuẩn đoán không được để trống!" }}
+                  rules={{ required: t("repairForm.diagnosisRequired") }}
                   render={({ field, fieldState }) => (
                     <InputTextarea
                       id={field.name}
@@ -541,7 +542,7 @@ const RepairFormDetailPage = () => {
               </div>
 
               <div className="field col-12 md:col-4">
-                <label htmlFor="CustomerNote">Ghi chú khách hàng</label>
+                <label htmlFor="CustomerNote">{t("repairForm.customerNote")}</label>
                 <Controller
                   name="CustomerNote"
                   control={control}
@@ -557,7 +558,7 @@ const RepairFormDetailPage = () => {
               </div>
 
               <div className="field col-12 md:col-4">
-                <label htmlFor="InternalNote">Ghi chú nội bộ</label>
+                <label htmlFor="InternalNote">{t("repairForm.internalNote")}</label>
                 <Controller
                   name="InternalNote"
                   control={control}
@@ -574,19 +575,19 @@ const RepairFormDetailPage = () => {
             </div>
           </ToggleablePanel>
           <ToggleablePanel
-            header="Thông tin xe và khách hàng"
+            header={t("repairForm.vehicleInfo")}
             className="pb-2"
             toggleable
           >
             <div className="formgrid grid">
               <div className="field col-12 md:col-4">
                 <label htmlFor="LicensePlate">
-                  Biển số xe <b className="p-error">*</b>
+                  {t("repairForm.licensePlate")} <b className="p-error">*</b>
                 </label>
                 <Controller
                   name="Car.LicensePlate"
                   control={control}
-                  rules={{ required: "Biển số xe không được để trống!" }}
+                  rules={{ required: t("repairForm.licensePlateRequired") }}
                   render={({ field, fieldState }) => (
                     <CarAutoComplete
                       field={field}
@@ -600,7 +601,7 @@ const RepairFormDetailPage = () => {
               </div>
 
               <div className="field col-12 md:col-4">
-                <label htmlFor="MaintainCycle">Chu kỳ bảo dưỡng</label>
+                <label htmlFor="MaintainCycle">{t("repairForm.maintainanceCycle")}</label>
                 <MaintainanceCycleAutoComplete
                   id="MaintainCycle"
                   onSelect={onMaintainanceCycleSelect}
@@ -608,7 +609,7 @@ const RepairFormDetailPage = () => {
               </div>
 
               <div className="field col-12 md:col-4">
-                <label htmlFor="ManufacturerName">Hãng xe</label>
+                <label htmlFor="ManufacturerName">{t("repairForm.manufacturer")}</label>
                 <InputText
                   id="ManufacturerName"
                   value={selectedCar.ManufacturerName || ""}
@@ -617,7 +618,7 @@ const RepairFormDetailPage = () => {
                 />
               </div>
               <div className="field col-12 md:col-4">
-                <label htmlFor="TypeName">Dòng xe</label>
+                <label htmlFor="TypeName">{t("repairForm.carType")}</label>
                 <InputText
                   id="TypeName"
                   value={selectedCar.TypeName || ""}
@@ -627,7 +628,7 @@ const RepairFormDetailPage = () => {
               </div>
 
               <div className="field col-12 md:col-4">
-                <label htmlFor="YearOfManufacture">Năm sản xuất</label>
+                <label htmlFor="YearOfManufacture">{t("repairForm.yearOfManufacture")}</label>
                 <InputText
                   id="YearOfManufacture"
                   value={selectedCar.YearOfManufacture || ""}
@@ -637,7 +638,7 @@ const RepairFormDetailPage = () => {
               </div>
 
               <div className="field col-12 md:col-4">
-                <label htmlFor="VIN">VIN</label>
+                <label htmlFor="VIN">{t("repairForm.vin")}</label>
                 <InputText
                   id="VIN"
                   value={selectedCar.VIN || ""}
@@ -647,7 +648,7 @@ const RepairFormDetailPage = () => {
               </div>
 
               <div className="field col-12 md:col-4">
-                <label htmlFor="PhoneNumber">Số điện thoại</label>
+                <label htmlFor="PhoneNumber">{t("customer.phone")}</label>
                 <InputText
                   id="PhoneNumber"
                   value={selectedCar.Customer?.PhoneNumber || ""}
@@ -657,7 +658,7 @@ const RepairFormDetailPage = () => {
               </div>
 
               <div className="field col-12 md:col-4">
-                <label htmlFor="FullName">Khách hàng</label>
+                <label htmlFor="FullName">{t("customer.fullName")}</label>
                 <InputText
                   id="FullName"
                   value={selectedCar.Customer?.FullName || ""}
@@ -677,7 +678,7 @@ const RepairFormDetailPage = () => {
               </div>
 
               <div className="field col-12 md:col-4">
-                <label htmlFor="Address">Địa chỉ</label>
+                <label htmlFor="Address">{t("customer.address")}</label>
                 <InputText
                   id="Address"
                   value={selectedCar.Customer?.Address || ""}
@@ -687,7 +688,7 @@ const RepairFormDetailPage = () => {
               </div>
 
               <div className="field col-12 md:col-4">
-                <label htmlFor="CustomerTypeName">Loại khách hàng</label>
+                <label htmlFor="CustomerTypeName">{t("customer.type")}</label>
                 <InputText
                   id="CustomerTypeName"
                   value={selectedCar.Customer?.TypeName || ""}
@@ -697,7 +698,7 @@ const RepairFormDetailPage = () => {
               </div>
 
               <div className="field col-12 md:col-4">
-                <label htmlFor="CustomerTaxCode">Mã số thuế</label>
+                <label htmlFor="CustomerTaxCode">{t("customer.taxCode")}</label>
                 <InputText
                   id="CustomerTaxCode"
                   value={selectedCar.Customer?.TaxCode || ""}
@@ -709,7 +710,7 @@ const RepairFormDetailPage = () => {
           </ToggleablePanel>
         </form>
         <ToggleablePanel
-          header="Chi phí phụ tùng sửa chữa"
+          header={t("repairForm.repairCost")}
           className="pb-2 mb-8"
           toggleable
         >

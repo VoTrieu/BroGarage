@@ -1,4 +1,5 @@
 import { Fragment, useState, useEffect, useRef } from "react";
+import { useTranslation } from "react-i18next";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { Button } from "primereact/button";
@@ -11,6 +12,7 @@ import { Paginator } from "primereact/paginator";
 import classes from "./Table.module.scss";
 
 const AppDataTable = (props) => {
+  const { t } = useTranslation();
   const [deleteItemDialog, setDeleteItemDialog] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
   const [expandedRows, setExpandedRows] = useState(null);
@@ -25,7 +27,7 @@ const AppDataTable = (props) => {
   const [isExporting, setIsExporting] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [pageInputTooltip, setPageInputTooltip] = useState(
-    "Nhấn phím 'Enter' để đi tới trang này."
+    t("common.enterPageTooltip")
   );
 
   const [first, setFirst] = useState();
@@ -109,13 +111,13 @@ const AppDataTable = (props) => {
           <InputText
             type="search"
             onInput={(e) => setSearchText(e.target.value)}
-            placeholder="Tìm kiếm..."
+            placeholder={t("common.search")}
           />
         </span>
 
         {!props.isHideCreateButton && (
           <Button
-            label="Thêm mới"
+            label={t("common.addNew")}
             icon="pi pi-plus"
             className="p-button-success ml-4 mt-2 md:mt-0"
             onClick={createNewItem}
@@ -124,7 +126,7 @@ const AppDataTable = (props) => {
 
         {props.excelExportable && (
           <Button
-            label="Xuất Excel File"
+            label={t("common.exportExcel")}
             icon="pi pi-file-excel"
             disabled={isExporting}
             className="p-button-success ml-4 mt-2 md:mt-0"
@@ -164,13 +166,13 @@ const AppDataTable = (props) => {
   const deleteItemDialogFooter = (
     <Fragment>
       <Button
-        label="No"
+        label={t("common.no")}
         icon="pi pi-times"
         className="p-button-text"
         onClick={hideDeleteItemDialog}
       />
       <Button
-        label="Yes"
+        label={t("common.yes")}
         icon="pi pi-check"
         className="p-button-text"
         onClick={deleteSelectedItem}
@@ -188,7 +190,7 @@ const AppDataTable = (props) => {
       } else {
         const first = currentPage ? options.rows * (page - 1) : 0;
         setFirst(first);
-        setPageInputTooltip("Nhấn phím 'Enter' để đi tới trang này.");
+        setPageInputTooltip(t("common.enterPageTooltip"));
         fetchData(rows, page);
       }
     }
@@ -357,7 +359,7 @@ const AppDataTable = (props) => {
       <Dialog
         visible={deleteItemDialog}
         style={{ width: "450px" }}
-        header="Confirm"
+        header={t("common.confirm")}
         modal
         footer={deleteItemDialogFooter}
         onHide={hideDeleteItemDialog}
@@ -367,7 +369,7 @@ const AppDataTable = (props) => {
             className="pi pi-exclamation-triangle mr-3"
             style={{ fontSize: "2rem" }}
           />
-          {selectedItem && <span>Bạn thật sự muốn xoá dữ liệu đã chọn?</span>}
+          {selectedItem && <span>{t("common.deleteConfirmation")}</span>}
         </div>
       </Dialog>
     </Fragment>

@@ -1,4 +1,5 @@
 import { forwardRef, Fragment } from "react";
+import { useTranslation } from "react-i18next";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { ColumnGroup } from "primereact/columngroup";
@@ -9,6 +10,7 @@ import { sumBy } from "lodash";
 import classes from "./RepairFormPdf.module.scss";
 
 const RepairFormPdf = forwardRef((props, ref) => {
+  const { t } = useTranslation();
   const { data } = props;
   const orderDetails = data?.OrderDetails.filter(
     (item) => item.IsHideProduct === false
@@ -21,11 +23,13 @@ const RepairFormPdf = forwardRef((props, ref) => {
   const titleFooterTemplate = () => {
     return (
       <Fragment>
-        <div className="py-1">Cộng (A)</div>
-        <div className="py-1">Chiết khấu ({data.Discount || 0}%) (B)</div>
-        <div className="py-1">Thuế GTGT (10%) (C)</div>
-        <div className="py-1">Tạm ứng (D)</div>
-        <div className="py-1">Tổng cộng (A-B+C-D)</div>
+        <div className="py-1">{t("pdf.subtotalA")}</div>
+        <div className="py-1">
+          {t("pdf.discountB", { discount: data.Discount || 0 })}
+        </div>
+        <div className="py-1">{t("pdf.taxC")}</div>
+        <div className="py-1">{t("pdf.advancePaymentD")}</div>
+        <div className="py-1">{t("pdf.grandTotal")}</div>
       </Fragment>
     );
   };
@@ -82,69 +86,69 @@ const RepairFormPdf = forwardRef((props, ref) => {
         ref={ref}
       >
         <div className="header-info mb-5">
-          <h3 className="mb-1">CÔNG TY TNHH DỊCH VỤ SỮA CHỮA Ô TÔ XUÂN LAM</h3>
+          <h3 className="mb-1">{t("pdf.companyName")}</h3>
           <div className="flex my-1 mb-1">
-            <b className="w-2">Địa chỉ: </b>
-            <span>36 Đường số 2, Phường Tân Thành, Quận Tân Phú, TPHCM</span>
+            <b className="w-2">{t("pdf.address")}: </b>
+            <span>{t("pdf.companyAddress")}</span>
           </div>
           <div className="flex my-1 mb-1">
-            <b className="w-2">Hotline: </b>
+            <b className="w-2">{t("pdf.hotline")}: </b>
             <span className="w-3">0937640052</span>
-            <b className="w-3">Mã số thuế: </b>
+            <b className="w-3">{t("pdf.taxNumber")}: </b>
             <span className="w-3">0315337688</span>
           </div>
           <div className="flex my-1 mb-1">
-            <b className="w-2">Số tài khoản: </b>
+            <b className="w-2">{t("pdf.bankAccount")}: </b>
             <span className="w-3">0171003472793</span>
-            <b className="w-3">Chi nhánh ngân hàng: </b>
+            <b className="w-3">{t("pdf.bankBranch")}: </b>
             <span className="w-3">Vietcombank</span>
           </div>
         </div>
         <div className="text-center">
           <h3 className="mb-2">
-            {data.StatusId === 1 ? "PHIẾU BÁO GIÁ" : "QUYẾT TOÁN SỬA CHỮA"}
+            {data.StatusId === 1 ? t("pdf.quotation") : t("pdf.invoice")}
           </h3>
-          <span>Ngày {data.CreatedDate}</span>
+          <span>{t("pdf.date", { date: data.CreatedDate })}</span>
         </div>
         <div className="text-right mt-2 p-1 flex justify-content-end">
-          <span>Số phiếu: </span>
+          <span>{t("pdf.orderNumber")}</span>
           <div className="w-2">{data.OrderId}</div>
         </div>
         <section>
           <div className="surface-400 mt-0 p-1">
-            <h4 className="my-0">Thông tin khách hàng</h4>
+            <h4 className="my-0">{t("pdf.customerInfo")}</h4>
           </div>
           <div className="px-3 grid">
             <div className="col-6">
               <div className="flex my-1">
-                <span className="w-3">Khách hàng</span>
+                <span className="w-3">{t("pdf.customerName")}</span>
                 <span className="mx-2">:</span>
                 <span>{data.Car.Customer.FullName}</span>
               </div>
               <div className="flex my-1">
-                <span className="w-3">Người đại diện</span>
+                <span className="w-3">{t("pdf.representative")}</span>
                 <span className="mx-2">:</span>
                 <span>{data.Car.Customer.Representative}</span>
               </div>
               <div className="flex my-1">
-                <span className="w-3">Mã số thuế</span>
+                <span className="w-3">{t("pdf.taxCode")}</span>
                 <span className="mx-2">:</span>
                 <span>{data.Car.Customer.TaxCode}</span>
               </div>
             </div>
             <div className="col-6">
               <div className="flex my-1">
-                <span className="w-4">Địa chỉ</span>
+                <span className="w-4">{t("pdf.address")}</span>
                 <span className="mx-2">:</span>
                 <span>{data.Car.Customer.Address}</span>
               </div>
               <div className="flex my-1">
-                <span className="w-4">Điện thoại liên lạc</span>
+                <span className="w-4">{t("pdf.phoneNumber")}</span>
                 <span className="mx-2">:</span>
                 <span>{data.Car.Customer.PhoneNumber}</span>
               </div>
               <div className="flex my-1">
-                <span className="w-4">Email</span>
+                <span className="w-4">{t("pdf.email")}</span>
                 <span className="mx-2">:</span>
                 <span>{data.Car.Customer.Email}</span>
               </div>
@@ -153,44 +157,44 @@ const RepairFormPdf = forwardRef((props, ref) => {
         </section>
         <section className="my-1">
           <div className="surface-400 mt-0 p-1">
-            <h4 className="my-0">Thông tin xe</h4>
+            <h4 className="my-0">{t("pdf.vehicleInfo")}</h4>
           </div>
           <div className="grid px-3">
             <div className="col-6">
               <div className="flex my-1">
-                <span className="w-3">Biển số</span>
+                <span className="w-3">{t("repairForm.licensePlate")}</span>
                 <span className="mx-2">:</span>
                 <span>{data.Car.LicensePlate}</span>
               </div>
               <div className="flex my-1">
-                <span className="w-3">Số VIN</span>
+                <span className="w-3">{t("table.vin")}</span>
                 <span className="mx-2">:</span>
                 <span>{data.Car.VIN}</span>
               </div>
               <div className="flex my-1">
-                <span className="w-3">Số ODO vào</span>
+                <span className="w-3">{t("repairForm.currentOdo")}</span>
                 <span className="mx-2">:</span>
                 <span>{data.ODOCurrent}</span>
               </div>
               <div className="flex my-1">
-                <span className="w-3">Ngày vào</span>
+                <span className="w-3">{t("report.dateIn")}</span>
                 <span className="mx-2">:</span>
                 <span>{data.DateIn}</span>
               </div>
             </div>
             <div className="col-6">
               <div className="flex my-1">
-                <span className="w-4">Loại xe</span>
+                <span className="w-4">{t("repairForm.carType")}</span>
                 <span className="mx-2">:</span>
                 <span>{data.Car.TypeName}</span>
               </div>
               <div className="flex my-1">
-                <span className="w-4">Kỳ bảo dưỡng kế</span>
+                <span className="w-4">{t("repairForm.odoNext")}</span>
                 <span className="mx-2">:</span>
                 <span>{data.ODONext}</span>
               </div>
               <div className="flex my-1">
-                <span className="w-4">Ngày giao xe</span>
+                <span className="w-4">{t("repairForm.expectedDeliveryDate")}</span>
                 <span className="mx-2">:</span>
                 <span>{data.DateOutEstimated}</span>
               </div>
@@ -199,7 +203,7 @@ const RepairFormPdf = forwardRef((props, ref) => {
         </section>
         <section className="my-1">
           <div className="surface-400 mt-0 p-1">
-            <h4 className="my-0">Yêu cầu của khách hàng / Ghi chú</h4>
+            <h4 className="my-0">{t("repairForm.customerNote")}</h4>
           </div>
           <p className="border w-full px-3">{data.CustomerNote}</p>
           {/* <InputTextarea value={data.CustomerNote} className="border w-full px-3" rows={3} cols={30}/> */}
@@ -214,30 +218,30 @@ const RepairFormPdf = forwardRef((props, ref) => {
           >
             <Column
               field="ProductName"
-              header="Nội dung công việc / Tên phụ tùng"
+              header={t("pdf.workContent")}
               className={classes.pdf_font_size}
             ></Column>
             <Column
               field="UnitName"
-              header="Đơn vị tính"
+              header={t("pdf.unit")}
               className={classes.pdf_font_size}
             ></Column>
             <Column
               field="Quantity"
-              header="Số lượng"
+              header={t("pdf.quantity")}
               className={classNames(classes.pdf_font_size, "text-right")}
             ></Column>
             <Column
               field="UnitPrice"
               className={classNames(classes.pdf_font_size, "text-right")}
               body={(rowData) => priceBodyTemplate(rowData, "UnitPrice")}
-              header="Đơn giá"
+              header={t("pdf.unitPrice")}
             ></Column>
             <Column
               field="Total"
               className={classNames(classes.pdf_font_size, "text-right")}
               body={(rowData) => priceBodyTemplate(rowData, "Total")}
-              header="Thành tiền"
+              header={t("pdf.amount")}
             ></Column>
           </DataTable>
         </section>
@@ -247,26 +251,23 @@ const RepairFormPdf = forwardRef((props, ref) => {
           <div className="grid my-8">
             <div className="col-6 text-center">
               <p>
-                <b>XÁC NHẬN GARAGE</b>
+                <b>{t("pdf.garageConfirmation")}</b>
               </p>
-              <span>(Ký họ tên)</span>
+                <span>{t("pdf.signature")}</span>
             </div>
 
             <div className="col-6 text-center">
               <p>
-                <b>XÁC NHẬN KHÁCH HÀNG</b>
+                <b>{t("pdf.customerConfirmation")}</b>
               </p>
-              <span>(Ký họ tên)</span>
+                <span>{t("pdf.signature")}</span>
             </div>
           </div>
         </section>
         <section className="pt-4">
-          <p>
-            Phụ tùng thay thế được bảo hành 6 tháng hoặc 10.000 km tùy điều kiện
-            nào đến trước.
-          </p>
+          <p>{t("pdf.warrantyNote")}</p>
           {data.StatusId === 1 && (
-            <p>Báo giá có thời hạn trong 15 ngày kể từ ngày báo giá. </p>
+            <p>{t("pdf.quotationExpiryNote")}</p>
           )}
         </section>
       </div>

@@ -1,4 +1,5 @@
 import { Fragment, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Fieldset } from "primereact/fieldset";
 import { Calendar } from "primereact/calendar";
 import { Button } from "primereact/button";
@@ -30,6 +31,7 @@ const defaultValues = {
 };
 
 const ReportPage = () => {
+  const { t } = useTranslation();
   const [repairForms, setRepairForms] = useState([]);
   const [paginatorOptions, setPaginatorOptions] = useState();
 
@@ -60,15 +62,15 @@ const ReportPage = () => {
     }
 
     if (!value && compareDate) {
-      return `${fieldLabel} không thể để trống`;
+      return t("report.required", { field: fieldLabel });
     }
 
     if (isFromDate && value > compareDate) {
-      return `${fieldLabel} từ không thể lớn hơn ${fieldLabel} đến!`;
+      return t("report.dateRangeFromInvalid", { field: fieldLabel });
     }
 
     if (!isFromDate && value < compareDate) {
-      return `${fieldLabel} đến không thể nhỏ hơn ${fieldLabel} từ!`;
+      return t("report.dateRangeToInvalid", { field: fieldLabel });
     }
   };
 
@@ -88,7 +90,7 @@ const ReportPage = () => {
   const columns = [
     {
       field: "OrderId",
-      header: "Mã phiếu",
+      header: t("report.orderCode"),
       body: (rowData) => {
         return (
           <Link to={`/app/repair-detail/${rowData.OrderId}`}>
@@ -99,19 +101,19 @@ const ReportPage = () => {
     },
     {
       field: "Car.LicensePlate",
-      header: "Biển số",
+      header: t("report.licensePlate"),
     },
     {
       field: "Car.ManufacturerName",
-      header: "Hãng xe",
+      header: t("report.manufacturer"),
     },
     {
       field: "Car.TypeName",
-      header: "Dòng xe",
+      header: t("report.carType"),
     },
     {
       field: "Car.Customer.FullName",
-      header: "Tên khách hàng",
+      header: t("report.customerName"),
       body: (rowData) => {
         return (
           <Link to={`/app/customer-detail/${rowData.Car.Customer.CustomerId}`}>
@@ -122,12 +124,12 @@ const ReportPage = () => {
     },
     {
       field: "StatusName",
-      header: "Trạng thái",
+      header: t("report.status"),
       body: statusBodyTemplate,
     },
     {
       field: "OrderDate",
-      header: "Ngày lập phiếu",
+      header: t("report.createdDate"),
     },
   ];
 
@@ -163,11 +165,11 @@ const ReportPage = () => {
   };
   return (
     <Fragment>
-      <Fieldset className="mb-4" legend="Thông tin tìm kiếm" collapsed={true} toggleable>
+      <Fieldset className="mb-4" legend={t("report.searchInfo")} collapsed={true} toggleable>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="formgrid grid">
             <div className="field col-12 md:col-4">
-              <label htmlFor="LicensePlate">Biển số xe</label>
+              <label htmlFor="LicensePlate">{t("report.licensePlate")}</label>
               <Controller
                 name="LicensePlate"
                 control={control}
@@ -182,7 +184,7 @@ const ReportPage = () => {
             </div>
 
             <div className="field col-12 md:col-4">
-              <label htmlFor="FullName">Khách hàng</label>
+              <label htmlFor="FullName">{t("report.customerName")}</label>
               <Controller
                 name="FullName"
                 control={control}
@@ -197,7 +199,7 @@ const ReportPage = () => {
             </div>
 
             <div className="field col-12 md:col-4">
-              <label htmlFor="StatusId">Tình trạng phiếu</label>
+              <label htmlFor="StatusId">{t("report.status")}</label>
               <Controller
                 name="StatusId"
                 control={control}
@@ -208,7 +210,7 @@ const ReportPage = () => {
             </div>
 
             <div className="field col-12 md:col-4">
-              <label htmlFor="createdFromDate">Ngày lập phiếu từ</label>
+              <label htmlFor="createdFromDate">{t("report.createdDate")}</label>
               <Controller
                 name="createdFromDate"
                 control={control}
@@ -219,7 +221,7 @@ const ReportPage = () => {
                         value,
                         "createdToDate",
                         true,
-                        "Ngày lập phiếu"
+                        t("report.createdDate")
                       ),
                   },
                 }}
@@ -242,7 +244,7 @@ const ReportPage = () => {
             </div>
 
             <div className="field col-12 md:col-4">
-              <label htmlFor="createdToDate">Ngày lập phiếu đến</label>
+              <label htmlFor="createdToDate">{t("report.createdDate")}</label>
               <Controller
                 name="createdToDate"
                 control={control}
@@ -253,7 +255,7 @@ const ReportPage = () => {
                         value,
                         "createdFromDate",
                         false,
-                        "Ngày lập phiếu"
+                        t("report.createdDate")
                       ),
                   },
                 }}
@@ -277,20 +279,20 @@ const ReportPage = () => {
             <div className="col-12 md:col-4"></div>
 
             <div className="field col-12 md:col-4">
-              <label htmlFor="dateInFrom">Ngày vào từ</label>
+              <label htmlFor="dateInFrom">{t("report.dateInFrom")}</label>
               <Controller
                 name="dateInFrom"
                 control={control}
                 rules={{
-                  validate: {
-                    isDateValue: (value) =>
-                      validateFromDateToDate(
-                        value,
-                        "dateInTo",
-                        true,
-                        "Ngày vào"
-                      ),
-                  },
+                      validate: {
+                        isDateValue: (value) =>
+                          validateFromDateToDate(
+                            value,
+                            "dateInTo",
+                            true,
+                            t("report.dateIn")
+                          ),
+                      },
                 }}
                 render={({ field, fieldState }) => (
                   <Calendar
@@ -311,20 +313,20 @@ const ReportPage = () => {
             </div>
 
             <div className="field col-12 md:col-4">
-              <label htmlFor="dateInTo">Ngày vào đến</label>
+              <label htmlFor="dateInTo">{t("report.dateInTo")}</label>
               <Controller
                 name="dateInTo"
                 control={control}
                 rules={{
-                  validate: {
-                    isDateValue: (value) =>
-                      validateFromDateToDate(
-                        value,
-                        "dateInFrom",
-                        false,
-                        "Ngày vào"
-                      ),
-                  },
+                      validate: {
+                        isDateValue: (value) =>
+                          validateFromDateToDate(
+                            value,
+                            "dateInFrom",
+                            false,
+                            t("report.dateIn")
+                          ),
+                      },
                 }}
                 render={({ field, fieldState }) => (
                   <Calendar
@@ -346,20 +348,20 @@ const ReportPage = () => {
             <div className="col-12 md:col-4"></div>
 
             <div className="field col-12 md:col-4">
-              <label htmlFor="dateOutFrom">Ngày ra từ</label>
+              <label htmlFor="dateOutFrom">{t("report.dateOutFrom")}</label>
               <Controller
                 name="dateOutFrom"
                 control={control}
                 rules={{
-                  validate: {
-                    isDateValue: (value) =>
-                      validateFromDateToDate(
-                        value,
-                        "dateOutTo",
-                        true,
-                        "Ngày ra"
-                      ),
-                  },
+                      validate: {
+                        isDateValue: (value) =>
+                          validateFromDateToDate(
+                            value,
+                            "dateOutTo",
+                            true,
+                            t("report.dateOut")
+                          ),
+                      },
                 }}
                 render={({ field, fieldState }) => (
                   <Calendar
@@ -380,20 +382,20 @@ const ReportPage = () => {
             </div>
 
             <div className="field col-12 md:col-4">
-              <label htmlFor="dateOutTo">Ngày ra đến</label>
+              <label htmlFor="dateOutTo">{t("report.dateOutTo")}</label>
               <Controller
                 name="dateOutTo"
                 control={control}
                 rules={{
-                  validate: {
-                    isDateValue: (value) =>
-                      validateFromDateToDate(
-                        value,
-                        "dateOutFrom",
-                        false,
-                        "Ngày ra"
-                      ),
-                  },
+                      validate: {
+                        isDateValue: (value) =>
+                          validateFromDateToDate(
+                            value,
+                            "dateOutFrom",
+                            false,
+                            t("report.dateOut")
+                          ),
+                      },
                 }}
                 render={({ field, fieldState }) => (
                   <Calendar
@@ -417,7 +419,7 @@ const ReportPage = () => {
             <Button
               disabled={!isDirty}
               type="button"
-              label="Xoá"
+              label={t("report.reset")}
               icon="pi pi-refresh"
               className="mt-2 mr-4"
               onClick={() => reset(defaultValues)}
@@ -425,7 +427,7 @@ const ReportPage = () => {
             <Button
               disabled={!isValid || !isDirty}
               type="submit"
-              label="Tìm kiếm"
+              label={t("report.search")}
               icon="pi pi-search"
               className="mt-2"
             />
@@ -437,11 +439,11 @@ const ReportPage = () => {
         data={repairForms}
         columns={columns}
         dataKey="TemplateId"
-        title="Phiếu bảo dưỡng / sửa chữa"
+        title={t("report.title")}
         isHideBodyActions={true}
         isHideCreateButton={true}
         excelExportable={true}
-        excelFileName="Báo cáo"
+        excelFileName={t("report.report")}
         paginatorOptions={paginatorOptions}
         fnGetData={getData}
         fnGetAllDataForExport={exportReport}

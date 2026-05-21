@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { AutoComplete } from "primereact/autocomplete";
 import { getMaintainanceCycle } from "../../services/maintainance-cycle-service";
 import axios from "axios";
 
 const MaintainanceCycleAutoComplete = (props) => {
+  const { t } = useTranslation();
   const [searchText, setSearchText] = useState(null);
   const [filteredValues, setFilteredValues] = useState([]);
   const [selectedMaintainanceCyle, setSelectedMaintainanceCyle] = useState();
@@ -65,7 +67,7 @@ const MaintainanceCycleAutoComplete = (props) => {
       forceSelection
       itemTemplate={itemPlateTemplate}
       onSelect={(e) => onSelect(e.value)}
-      placeholder="Nhập từ khoá"
+      placeholder={t("autocomplete.keywordPlaceholder")}
       className="w-full"
     />
   );

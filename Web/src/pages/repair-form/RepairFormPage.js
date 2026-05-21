@@ -1,4 +1,5 @@
 import { Fragment, useState, useRef } from "react";
+import { useTranslation } from "react-i18next";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { useNavigate } from "react-router-dom";
@@ -14,6 +15,7 @@ import { getRepairFormDetail } from "../../services/repair-service";
 import classes from "./RepairForm.module.scss";
 
 const RepairingFormPage = () => {
+  const { t } = useTranslation();
   const [repairForms, setRepairForms] = useState([]);
   const [selectedOrderId, setSelectedOrderId] = useState("");
   const [paginatorOptions, setPaginatorOptions] = useState();
@@ -78,32 +80,32 @@ const RepairingFormPage = () => {
   const columns = [
     {
       field: "OrderId",
-      header: "Số phiếu",
+      header: t("repairForm.orderCode"),
     },
     {
       field: "Car.LicensePlate",
-      header: "Biển số",
+      header: t("repairForm.licensePlate"),
     },
     {
       field: "Car.ManufacturerName",
-      header: "Hãng xe",
+      header: t("repairForm.manufacturer"),
     },
     {
       field: "Car.TypeName",
-      header: "Dòng xe",
+      header: t("repairForm.carType"),
     },
     {
       field: "Car.Customer.FullName",
-      header: "Tên khách hàng",
+      header: t("repairForm.customerName"),
     },
     {
       field: "StatusName",
-      header: "Trạng thái",
+      header: t("repairForm.status"),
       body: statusBodyTemplate,
     },
     {
       field: "OrderDate",
-      header: "Ngày lập phiếu",
+      header: t("repairForm.createdDate"),
     },
   ];
 
@@ -111,13 +113,13 @@ const RepairingFormPage = () => {
     return (
       <div className="orders-subtable ml-8">
         <DataTable value={order.OrderDetails} responsiveLayout="scroll">
-          <Column field="ProductCode" header="Mã phụ tùng"></Column>
-          <Column field="ProductName" header="Mô tả"></Column>
-          <Column field="Quantity" header="Số lượng"></Column>
-          <Column field="UnitName" header="Đơn vị tính"></Column>
+          <Column field="ProductCode" header={t("repairForm.sparePartCode")}></Column>
+          <Column field="ProductName" header={t("repairForm.description")}></Column>
+          <Column field="Quantity" header={t("repairForm.quantity")}></Column>
+          <Column field="UnitName" header={t("repairForm.unit")}></Column>
           <Column
             field="UnitPrice"
-            header="Đơn giá"
+            header={t("repairForm.unitPrice")}
             body={(rowData) => {
               return new Intl.NumberFormat("vi-VN", {
                 style: "currency",
@@ -137,7 +139,7 @@ const RepairingFormPage = () => {
         data={repairForms}
         columns={columns}
         dataKey="OrderId"
-        title="Phiếu bảo dưỡng / sửa chữa"
+        title={t("repairForm.title")}
         deleteSelectedItem={deletedSelectedRepairForm}
         rowExpansionTemplate={rowExpansionTemplate}
         createNewItem={createRepairForm}

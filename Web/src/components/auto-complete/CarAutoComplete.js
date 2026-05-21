@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { AutoComplete } from "primereact/autocomplete";
 import { classNames } from "primereact/utils";
 import { getCars } from "../../services/car-service";
 import axios from "axios";
 
 const CarAutoComplete = (props) => {
+  const { t } = useTranslation();
   const [searchText, setSearchText] = useState(null);
   const [filteredCars, setFilteredCars] = useState([]);
 
@@ -57,7 +59,7 @@ const CarAutoComplete = (props) => {
       forceSelection
       itemTemplate={itemLicensePlateTemplate}
       onSelect={(e) => onLicensePlateChange(e.value)}
-      placeholder="Nhập từ khoá"
+      placeholder={t("autocomplete.keywordPlaceholder")}
       className={classNames("w-full", {
         "p-invalid": props.fieldState?.error,
       })}

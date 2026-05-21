@@ -1,4 +1,5 @@
 import { Fragment, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 
@@ -7,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { deleteCustomer, getCustomers } from "../../services/customer-service";
 
 const CustomersPage = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const [customers, setCustomers] = useState(null);
   const [paginatorOptions, setPaginatorOptions] = useState();
@@ -22,27 +24,27 @@ const CustomersPage = () => {
   const columns = [
     {
       field: "FullName",
-      header: "Tên khách hàng",
+      header: t("customer.fullName"),
     },
     {
       field: "PhoneNumber",
-      header: "Số điện thoại",
+      header: t("customer.phone"),
     },
     {
       field: "Address",
-      header: "Địa chỉ",
+      header: t("customer.address"),
     },
     {
       field: "Email",
-      header: "Email",
+      header: t("customer.email"),
     },
     {
       field: "TaxCode",
-      header: "Mã số thuế",
+      header: t("customer.taxCode"),
     },
     {
       field: "Note",
-      header: "Ghi chú",
+      header: t("table.note"),
     },
   ];
 
@@ -71,11 +73,11 @@ const CustomersPage = () => {
           responsiveLayout="stack"
           breakpoint="960px"
         >
-          <Column field="LicensePlate" header="Biển số"></Column>
-          <Column field="TypeName" header="Dòng xe"></Column>
-          <Column field="ManufacturerName" header="Nhà sản xuất"></Column>
-          <Column field="YearOfManufacture" header="Năm sản xuất"></Column>
-          <Column field="VIN" header="VIN"></Column>
+          <Column field="LicensePlate" header={t("table.licensePlate")}></Column>
+          <Column field="TypeName" header={t("table.carType")}></Column>
+          <Column field="ManufacturerName" header={t("table.manufacturer")}></Column>
+          <Column field="YearOfManufacture" header={t("table.yearOfManufacture")}></Column>
+          <Column field="VIN" header={t("table.vin")}></Column>
         </DataTable>
       </div>
     );
@@ -87,7 +89,7 @@ const CustomersPage = () => {
         data={customers}
         columns={columns}
         dataKey="CustomerId"
-        title="Khách hàng"
+        title={t("customer.title")}
         deleteSelectedItem={deletedSelectedCustomer}
         rowExpansionTemplate={rowExpansionTemplate}
         createNewItem={createNewCustomer}

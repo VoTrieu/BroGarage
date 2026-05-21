@@ -1,4 +1,5 @@
 import { Fragment, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 
@@ -10,6 +11,7 @@ import {
 } from "../../services/maintainance-cycle-service";
 
 const MaintainanceCyclePage = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const [maintainanceCycles, setMaintainanceCycles] = useState(null);
   const [paginatorOptions, setPaginatorOptions] = useState();
@@ -25,23 +27,23 @@ const MaintainanceCyclePage = () => {
   const columns = [
     {
       field: "ManufacturerName",
-      header: "Hãng xe",
+      header: t("maintainanceCycle.manufacturer"),
     },
     {
       field: "CarTypeName",
-      header: "Dòng xe",
+      header: t("maintainanceCycle.carType"),
     },
     {
       field: "YearOfManufactureFrom",
-      header: "Năm sản xuất từ",
+      header: t("maintainanceCycle.yearFrom"),
     },
     {
       field: "YearOfManufactureTo",
-      header: "Năm sản xuất đến",
+      header: t("maintainanceCycle.yearTo"),
     },
     {
       field: "Note",
-      header: "Ghi chú",
+      header: t("maintainanceCycle.note"),
     },
   ];
 
@@ -70,11 +72,11 @@ const MaintainanceCyclePage = () => {
           responsiveLayout="stack"
           breakpoint="960px"
         >
-          <Column field="ProductCode" header="Mã phụ tùng"></Column>
-          <Column field="ProductName" header="Mô tả"></Column>
-          <Column field="Quantity" header="Số lượng"></Column>
-          <Column field="UnitName" header="Đơn vị tính"></Column>
-          <Column field="UnitPrice" header="Đơn giá"></Column>
+          <Column field="ProductCode" header={t("sparePart.productCode")}></Column>
+          <Column field="ProductName" header={t("sparePart.description")}></Column>
+          <Column field="Quantity" header={t("table.quantity")}></Column>
+          <Column field="UnitName" header={t("table.unit")}></Column>
+          <Column field="UnitPrice" header={t("table.unitPrice")}></Column>
         </DataTable>
       </div>
     );
@@ -86,7 +88,7 @@ const MaintainanceCyclePage = () => {
         data={maintainanceCycles}
         columns={columns}
         dataKey="TemplateId"
-        title="Chu kỳ bảo dưỡng"
+        title={t("maintainanceCycle.title")}
         deleteSelectedItem={deletedSelectedMaintainanceCycle}
         rowExpansionTemplate={rowExpansionTemplate}
         createNewItem={createMaintainanceCycle}

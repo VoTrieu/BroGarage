@@ -1,5 +1,6 @@
 import { useRef, Fragment } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
 import { useForm, Controller } from "react-hook-form";
 import { classNames } from "primereact/utils";
 import { Button } from "primereact/button";
@@ -10,6 +11,7 @@ import { changePasswordRequest } from "../../store/auth-actions";
 import { uiActions } from "../../store/ui-slice";
 
 const ChangePassword = (props) => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const formRef = useRef();
   const isShowChangePasswordDialog = useSelector(
@@ -54,14 +56,14 @@ const ChangePassword = (props) => {
   const changePasswordDialogFooter = (
     <Fragment>
       <Button
-        label="Thoát"
+        label={t("common.cancel")}
         icon="pi pi-times"
         className="p-button-text"
         onClick={onHideChangePasswordForm}
       />
       <Button
         disabled={isSubmitting}
-        label="Đổi mật khẩu"
+        label={t("account.changePassword")}
         icon="pi pi-check"
         className="p-button-text"
         onClick={onChangePassword}
@@ -73,7 +75,7 @@ const ChangePassword = (props) => {
     <Dialog
       visible={isShowChangePasswordDialog}
       style={{ width: "450px" }}
-      header="Đổi mật khẩu"
+      header={t("account.changePassword")}
       modal
       className="p-fluid"
       footer={changePasswordDialogFooter}
@@ -94,11 +96,11 @@ const ChangePassword = (props) => {
         className="formgrid grid"
       >
         <div className="field col-12">
-          <label htmlFor="CurrentPassword">Mật khẩu hiện tại</label>
+          <label htmlFor="CurrentPassword">{t("account.currentPassword")}</label>
           <Controller
             name="CurrentPassword"
             control={control}
-            rules={{ required: "Mật khẩu hiện tại không được để trống!" }}
+            rules={{ required: t("account.currentPasswordRequired") }}
             render={({ field, fieldState }) => (
               <Password
                 value={field.value}
@@ -116,17 +118,17 @@ const ChangePassword = (props) => {
         </div>
 
         <div className="field col-12">
-          <label htmlFor="NewPassword">Mật khẩu mới</label>
+          <label htmlFor="NewPassword">{t("account.newPassword")}</label>
           <Controller
             name="NewPassword"
             control={control}
             rules={{ 
-              required: "Mật khẩu mới không được để trống!" ,
+              required: t("account.newPasswordRequired"),
               validate: {
                 isMatched: (value) =>{
                   const confirPass =  getValues('NewPasswordConfirm');
                   if(value !== confirPass){
-                    return "Mật khẩu mới không trùng khớp!"
+                    return t("account.newPasswordMatch");
                   }
                   return true;
                 }
@@ -148,17 +150,17 @@ const ChangePassword = (props) => {
         </div>
 
         <div className="field col-12">
-          <label htmlFor="NewPasswordConfirm">Xác nhận mật khẩu mới</label>
+          <label htmlFor="NewPasswordConfirm">{t("account.confirmNewPassword")}</label>
           <Controller
             name="NewPasswordConfirm"
             control={control}
             rules={{ 
-              required: "Xác nhận mật khẩu mới không được để trống!",
+              required: t("account.confirmNewPasswordRequired"),
               validate: {
                 isMatched: (value) =>{
                   const newPass =  getValues('NewPassword');
                   if(value !== newPass){
-                    return "Mật khẩu mới không trùng khớp!"
+                    return t("account.newPasswordMatch");
                   }
                   return true;
                 }

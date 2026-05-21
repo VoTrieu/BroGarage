@@ -1,4 +1,5 @@
 import { Fragment, useState, useRef } from "react";
+import { useTranslation } from "react-i18next";
 import { Button } from "primereact/button";
 import { useForm, Controller } from "react-hook-form";
 import { Dialog } from "primereact/dialog";
@@ -26,9 +27,17 @@ const emptySparePart = {
   Remark: "",
 };
 
-const units = ["Hộp", "Cái", "Lít", "Kg", "Chai", "Bộ", "Can"];
-
 const SparePartPage = () => {
+  const { t } = useTranslation();
+  const units = [
+    t("units.box"),
+    t("units.piece"),
+    t("units.liter"),
+    t("units.kg"),
+    t("units.bottle"),
+    t("units.set"),
+    t("units.can"),
+  ];
   const formRef = useRef();
   const [spareParts, setSpareParts] = useState(null);
   const [showSparePartDetailDialog, setShowSparePartDetailDialog] =
@@ -65,19 +74,19 @@ const SparePartPage = () => {
   const columns = [
     {
       field: "ProductCode",
-      header: "Mã phụ tùng",
+      header: t("sparePart.productCode"),
     },
     {
       field: "ProductName",
-      header: "Mô tả",
+      header: t("sparePart.description"),
     },
     {
       field: "UnitName",
-      header: "Đơn vị tính",
+      header: t("table.unit"),
     },
     {
       field: "UnitPrice",
-      header: "Đơn giá",
+      header: t("table.unitPrice"),
       style: {
         width: "10rem",
       },
@@ -91,7 +100,7 @@ const SparePartPage = () => {
     },
     {
       field: "Quantity",
-      header: "Số lượng tồn kho",
+      header: t("sparePart.stockQuantity"),
       style: {
         width: "10rem",
       },
@@ -105,7 +114,7 @@ const SparePartPage = () => {
     },
     {
       field: "Remark",
-      header: "Ghi chú",
+      header: t("table.note"),
     },
   ];
 
@@ -167,13 +176,13 @@ const SparePartPage = () => {
   const sparePartDialogFooter = (
     <Fragment>
       <Button
-        label="Huỷ"
+        label={t("common.cancel")}
         icon="pi pi-times"
         className="p-button-text"
         onClick={onSparePartCancel}
       />
       <Button
-        label="Lưu"
+        label={t("common.save")}
         disabled={!isDirty}
         icon="pi pi-check"
         className="p-button-text"
@@ -185,7 +194,7 @@ const SparePartPage = () => {
   const cancelConfirmDialogFooter = (
     <Fragment>
       <Button
-        label="Huỷ"
+          label={t("common.cancel")}
         icon="pi pi-times"
         className="p-button-text"
         onClick={() => {
@@ -193,7 +202,7 @@ const SparePartPage = () => {
         }}
       />
       <Button
-        label="Thoát"
+          label={t("common.cancel")}
         icon="pi pi-check"
         className="p-button-text"
         onClick={() => {
@@ -210,12 +219,12 @@ const SparePartPage = () => {
         data={spareParts}
         columns={columns}
         dataKey="ProductId"
-        title="Phụ Tùng"
+      title={t("sparePart.title")}
         deleteSelectedItem={onDeletedSparePart}
         createNewItem={onCreateNewSparePart}
         updateItem={onUpdateSparePart}
         excelExportable={true}
-        excelFileName="Phụ tùng"
+      excelFileName={t("sparePart.title")}
         paginatorOptions={paginatorOptions}
         fnGetData={getData}
         fnGetAllDataForExport={getAllSparePart}
@@ -224,7 +233,7 @@ const SparePartPage = () => {
       <Dialog
         visible={showSparePartDetailDialog}
         style={{ width: "450px" }}
-        header="Chi tiết phụ tùng"
+        header={t("sparePart.detailTitle")}
         modal
         className="p-fluid"
         footer={sparePartDialogFooter}
@@ -233,12 +242,12 @@ const SparePartPage = () => {
         <form ref={formRef} onSubmit={handleSubmit(onSubmit)}>
           <div className="field">
             <label htmlFor="ProductCode">
-              Mã phụ tùng <b className="p-error">*</b>
+              {t("sparePart.productCode")} <b className="p-error">*</b>
             </label>
             <Controller
               name="ProductCode"
               control={control}
-              rules={{ required: "Mã phụ tùng không được để trống." }}
+              rules={{ required: t("sparePart.productCodeRequired") }}
               render={({ field, fieldState }) => (
                 <InputText
                   id={field.name}
@@ -254,12 +263,12 @@ const SparePartPage = () => {
 
           <div className="field">
             <label htmlFor="ProductName">
-              Mô tả <b className="p-error">*</b>
+              {t("sparePart.description")} <b className="p-error">*</b>
             </label>
             <Controller
               name="ProductName"
               control={control}
-              rules={{ required: "Mô tả không được để trống." }}
+              rules={{ required: t("sparePart.descriptionRequired") }}
               render={({ field, fieldState }) => (
                 <InputText
                   id={field.name}
@@ -275,13 +284,13 @@ const SparePartPage = () => {
 
           <div className="field">
             <label htmlFor="UnitPrice">
-              Đơn giá <b className="p-error">*</b>
+              {t("table.unitPrice")} <b className="p-error">*</b>
             </label>
             <Controller
               name="UnitPrice"
               control={control}
               rules={{
-                required: "Đơn giá không được để trống."
+                required: t("sparePart.unitPriceRequired")
               }}
               render={({ field, fieldState }) => (
                 <InputNumber
@@ -308,12 +317,12 @@ const SparePartPage = () => {
 
           <div className="field">
             <label htmlFor="UnitName">
-              Đơn vị tính <b className="p-error">*</b>
+              {t("table.unit")} <b className="p-error">*</b>
             </label>
             <Controller
               name="UnitName"
               control={control}
-              rules={{ required: "Đơn vị tính không được để trống!" }}
+              rules={{ required: t("sparePart.unitNameRequired") }}
               render={({ field, fieldState }) => (
                 <Dropdown
                   id={field.name}
@@ -323,7 +332,7 @@ const SparePartPage = () => {
                   className={classNames({
                     "p-invalid": fieldState.error,
                   })}
-                  placeholder="Chọn đơn vị tính"
+                  placeholder={t("sparePart.selectUnit")}
                 />
               )}
             />
@@ -331,7 +340,7 @@ const SparePartPage = () => {
           </div>
 
           <div className="field">
-            <label htmlFor="Quantity">Số lượng tồn kho</label>
+            <label htmlFor="Quantity">{t("sparePart.stockQuantity")}</label>
             <Controller
               name="Quantity"
               control={control}
@@ -349,7 +358,7 @@ const SparePartPage = () => {
           </div>
 
           <div className="field">
-            <label htmlFor="Remark">Ghi chú</label>
+            <label htmlFor="Remark">{t("table.note")}</label>
             <Controller
               name="Remark"
               control={control}
@@ -364,7 +373,7 @@ const SparePartPage = () => {
       <Dialog
         visible={isShowCancelDialog}
         style={{ width: "450px" }}
-        header="Xác nhận"
+        header={t("common.confirm")}
         modal
         footer={cancelConfirmDialogFooter}
         onHide={() => {
@@ -376,7 +385,7 @@ const SparePartPage = () => {
             className="pi pi-exclamation-triangle mr-3"
             style={{ fontSize: "2rem" }}
           />
-          Dữ liệu đã nhập sẽ bị mất, bạn có thật sự muốn thoát?
+          {t("common.cancelConfirmation")}
         </div>
       </Dialog>
     </Fragment>

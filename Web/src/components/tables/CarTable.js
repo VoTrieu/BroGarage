@@ -1,4 +1,5 @@
 import { Fragment, useState, useEffect, useRef } from "react";
+import { useTranslation } from "react-i18next";
 import { DataTable } from "primereact/datatable";
 import { useForm, Controller } from "react-hook-form";
 import { Column } from "primereact/column";
@@ -20,6 +21,7 @@ let emptyCar = {
 };
 
 const CarTable = (props) => {
+  const { t } = useTranslation();
   const formRef = useRef();
   const { handleCarsChange } = props;
   const {
@@ -123,7 +125,7 @@ const CarTable = (props) => {
       <span className="p-input-icon-left">
         <i className="pi pi-search" />
         <Button
-          label="Thêm mới"
+          label={t("common.addNew")}
           icon="pi pi-plus"
           className="p-button-success"
           onClick={openNew}
@@ -152,13 +154,13 @@ const CarTable = (props) => {
   const deleteCarDialogFooter = (
     <Fragment>
       <Button
-        label="Huỷ"
+        label={t("common.cancel")}
         icon="pi pi-times"
         className="p-button-text"
         onClick={hideDeleteCarDialog}
       />
       <Button
-        label="Xoá"
+        label={t("common.delete")}
         icon="pi pi-check"
         className="p-button-text"
         onClick={deleteCar}
@@ -175,13 +177,13 @@ const CarTable = (props) => {
   const carDialogFooter = (
     <Fragment>
       <Button
-        label="Huỷ"
+        label={t("common.cancel")}
         icon="pi pi-times"
         className="p-button-text"
         onClick={hideCarDetailDialog}
       />
       <Button
-        label="Lưu"
+        label={t("common.save")}
         icon="pi pi-check"
         className="p-button-text"
         onClick={() => formRef.current.requestSubmit()}
@@ -198,22 +200,22 @@ const CarTable = (props) => {
         responsiveLayout="stack"
         breakpoint="960px"
       >
-        <Column field="LicensePlate" header="Biển số xe" sortable></Column>
-        <Column field="ManufacturerName" header="Hãng xe" sortable></Column>
-        <Column field="TypeName" header="Dòng xe" sortable></Column>
+        <Column field="LicensePlate" header={t("table.licensePlate")} sortable></Column>
+        <Column field="ManufacturerName" header={t("table.manufacturer")} sortable></Column>
+        <Column field="TypeName" header={t("table.carType")} sortable></Column>
         <Column
           field="YearOfManufacture"
-          header="Năm sản xuất"
+          header={t("table.yearOfManufacture")}
           sortable
         ></Column>
-        <Column field="VIN" header="VIN" sortable></Column>
+        <Column field="VIN" header={t("table.vin")} sortable></Column>
         <Column body={actionBodyTemplate} exportable={false}></Column>
       </DataTable>
 
       <Dialog
         visible={isShowDeleteCarDialog}
         style={{ width: "450px" }}
-        header="Confirm"
+        header={t("common.confirm")}
         modal
         footer={deleteCarDialogFooter}
         onHide={hideDeleteCarDialog}
@@ -225,7 +227,7 @@ const CarTable = (props) => {
           />
           {selectedCar && (
             <span>
-              Bạn muốn xoá xe có biển số <b>{selectedCar.LicensePlate}</b>?
+              {t("customer.deleteConfirmation")} <b>{selectedCar.LicensePlate}</b>?
             </span>
           )}
         </div>
@@ -234,7 +236,7 @@ const CarTable = (props) => {
       <Dialog
         visible={isShowCarDetailDialog}
         style={{ width: "450px" }}
-        header="Thông tin xe"
+        header={t("maintainanceCycle.carInfo")}
         modal
         className="p-fluid"
         footer={carDialogFooter}
@@ -247,12 +249,12 @@ const CarTable = (props) => {
         >
           <div className="field">
             <label htmlFor="ManufacturerId">
-              Hãng xe <b className="p-error">*</b>
+              {t("table.manufacturer")} <b className="p-error">*</b>
             </label>
             <Controller
               name="ManufacturerId"
               control={control}
-              rules={{ required: "Hãng xe không được để trống." }}
+              rules={{ required: t("maintainanceCycle.manufacturerRequired") }}
               render={({ field, fieldState }) => (
                 <Dropdown
                   id={field.name}
@@ -274,7 +276,7 @@ const CarTable = (props) => {
                   className={classNames({
                     "p-invalid": fieldState.error,
                   })}
-                  placeholder="Chọn hãng xe"
+                  placeholder={t("maintainanceCycle.selectManufacturer")}
                 />
               )}
             />
@@ -283,12 +285,12 @@ const CarTable = (props) => {
 
           <div className="field">
             <label htmlFor="CarTypeId">
-              Dòng xe <b className="p-error">*</b>
+              {t("table.carType")} <b className="p-error">*</b>
             </label>
             <Controller
               name="CarTypeId"
               control={control}
-              rules={{ required: "Dòng xe không được để trống." }}
+              rules={{ required: t("maintainanceCycle.carTypeRequired") }}
               render={({ field, fieldState }) => (
                 <Dropdown
                   id={field.name}
@@ -306,7 +308,7 @@ const CarTable = (props) => {
                   className={classNames({
                     "p-invalid": fieldState.error,
                   })}
-                  placeholder="Chọn dòng xe"
+                  placeholder={t("maintainanceCycle.selectCarType")}
                 />
               )}
             />
@@ -315,13 +317,13 @@ const CarTable = (props) => {
 
           <div className="field">
             <label htmlFor="LicensePlate">
-              Biển số xe <b className="p-error">*</b>
+              {t("table.licensePlate")} <b className="p-error">*</b>
             </label>
             <Controller
               name="LicensePlate"
               control={control}
               rules={{
-                required: "Biển số xe không được để trống.",
+                required: t("car.licensePlateRequired"),
                 validate: {
                   isLicensePlateExist: (value) => {
                     if (selectedCar.LicensePlate) {
@@ -332,7 +334,7 @@ const CarTable = (props) => {
                       (item) => item.LicensePlate === value
                     );
                     if (index > -1) {
-                      return "Biển số xe đã tồn tại.";
+                      return t("car.licensePlateExist");
                     }
                     return true;
                   },
@@ -353,18 +355,18 @@ const CarTable = (props) => {
 
           <div className="field">
             <label htmlFor="YearOfManufacture">
-              Năm sản xuất <b className="p-error">*</b>
+              {t("table.yearOfManufacture")} <b className="p-error">*</b>
             </label>
             <Controller
               name="YearOfManufacture"
               control={control}
               rules={{ 
-                required: "Năm sản xuất không được để trống.",
+                required: t("car.yearRequired"),
                 validate: {
                   isDateValue: (value) => {
                     const currentDate = new Date();
                     if(value > currentDate){
-                      return "Năm sản xuất không được lớn hơn năm hiện tại";
+                      return t("car.currentYearValidation");
                     }
                     return true;
                   }
@@ -389,12 +391,12 @@ const CarTable = (props) => {
 
           <div className="field">
             <label htmlFor="VIN">
-              VIN <b className="p-error">*</b>
+              {t("table.vin")} <b className="p-error">*</b>
             </label>
             <Controller
               name="VIN"
               control={control}
-              rules={{ required: "VIN không không được để trống." }}
+              rules={{ required: t("car.vinRequired") }}
               render={({ field, fieldState }) => (
                 <InputText
                   id={field.name}
