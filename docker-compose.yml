@@ -1,6 +1,7 @@
 services:
   sql-server:
     image: mcr.microsoft.com/mssql/server:2022-latest
+    platform: linux/amd64
     container_name: brogarage-sql-server
     environment:
       ACCEPT_EULA: "Y"
@@ -16,6 +17,26 @@ services:
       timeout: 5s
       retries: 10
       start_period: 30s
+
+  sql-server-init:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    platform: linux/amd64
+    depends_on:
+      sql-server:
+        condition: service_healthy
+    environment:
+      MSSQL_SA_PASSWORD: "Password@1"
+    command:
+      - /bin/bash
+      - -c
+      - |
+        /opt/mssql-tools18/bin/sqlcmd \
+          -S sql-server \
+          -U sa \
+          -P "$$MSSQL_SA_PASSWORD" \
+          -C \
+          -Q "IF DB_ID(N'brogarage') IS NULL CREATE DATABASE [brogarage];"
+    restart: "no"
 
 volumes:
   sql-server-data:

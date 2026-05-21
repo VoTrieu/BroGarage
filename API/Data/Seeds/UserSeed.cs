@@ -11,8 +11,8 @@ namespace BroGarage.API.Data.Seeds
                 UserId = 1,
                 UserName = "admin",
                 FullName = "Quản trị viên",
-                Salt = "ztSiY7kw5joGzZcwdtKqztSiY7kw5joGzZcwdtKqztSiY7kw5joGzZcwdtKqztSiY7kw5joGzZcwdtKqztSiY7kw5joGzZcwdtKqztSiY7kw5joGzZcwdtKqztSiY7kw",
-                PasswordHash = "ea871309f6e9a5490bd909aaf2f80f57a7dca87397af1d454c95652fc4201deb",
+                Salt = "uh4naWyaApHldoTdVgLaOCi853g66HOIg51KMhhdo0vSZFCCoZsleyTVNVKUg7Ds1pfmSgGkyfpthBcpcpTP7fOx6C9uFWBpNI6WBKiVFzXYk9bkKin1JuVBYhaUXFHJ",
+                PasswordHash = "9c8bddf81ddbcdb97f891eda3cd108376a90fb2d45f4f0276cdfc8e3feaba2ea",
                 CreatedDate = CreatedDate,
                 CreatedTime = CreatedTime,
                 CreatedTimeStamp = CreatedTimeStamp

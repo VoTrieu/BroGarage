@@ -4,6 +4,7 @@ using BroGarage.API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BroGarage.API.Data.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20260521184556_Net10Sync")]
+    partial class Net10Sync
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -867,8 +870,8 @@ namespace BroGarage.API.Data.Migrations
                             CreatedTimeStamp = 1666210440L,
                             CreatedUserId = 0,
                             FullName = "Quản trị viên",
-                            PasswordHash = "9c8bddf81ddbcdb97f891eda3cd108376a90fb2d45f4f0276cdfc8e3feaba2ea",
-                            Salt = "uh4naWyaApHldoTdVgLaOCi853g66HOIg51KMhhdo0vSZFCCoZsleyTVNVKUg7Ds1pfmSgGkyfpthBcpcpTP7fOx6C9uFWBpNI6WBKiVFzXYk9bkKin1JuVBYhaUXFHJ",
+                            PasswordHash = "ea871309f6e9a5490bd909aaf2f80f57a7dca87397af1d454c95652fc4201deb",
+                            Salt = "ztSiY7kw5joGzZcwdtKqztSiY7kw5joGzZcwdtKqztSiY7kw5joGzZcwdtKqztSiY7kw5joGzZcwdtKqztSiY7kw5joGzZcwdtKqztSiY7kw5joGzZcwdtKqztSiY7kw",
                             UpdatedUserId = 0,
                             UserName = "admin"
                         });
