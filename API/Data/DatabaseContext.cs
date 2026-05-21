@@ -58,6 +58,24 @@ namespace BroGarage.API.Data
             modelBuilder.Entity<OrderTypeEntity>().HasData(OrderTypeSeed.Data);
 
             modelBuilder.Entity<OrderStatusEntity>().HasData(OrderStatusSeed.Data);
+
+            modelBuilder.Entity<ManufacturerEntity>().HasData(ManufacturerSeed.Data);
+
+            modelBuilder.Entity<CarTypeEntity>().HasData(CarTypeSeed.Data);
+
+            modelBuilder.Entity<CustomerEntity>().HasData(CustomerSeed.Data);
+
+            modelBuilder.Entity<CarEntity>().HasData(CarSeed.Data);
+
+            modelBuilder.Entity<ProductEntity>().HasData(ProductSeed.Data);
+
+            modelBuilder.Entity<TemplateEntity>().HasData(TemplateSeed.Data);
+
+            modelBuilder.Entity<TemplateDetailEntity>().HasData(TemplateDetailSeed.Data);
+
+            modelBuilder.Entity<OrderEntity>().HasData(OrderSeed.Data);
+
+            modelBuilder.Entity<OrderDetailEntity>().HasData(OrderDetailSeed.Data);
         }
     }
 }
