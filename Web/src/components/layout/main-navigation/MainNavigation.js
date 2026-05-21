@@ -56,19 +56,20 @@ function MainNavigation() {
 
   const start = (
     <Fragment>
-      <img
-        alt="logo"
-        src='/images/logo.png'
-        height="40"
-        className="mr-2 md:w-13rem md:mr-8 hidden md:inline"
-      ></img>
-      <Button icon="pi pi-bars" onClick={toggleSlidebarMenu} />
+      <div className="app-brand">
+        <img alt="Bro Garage" src="/images/logo.png" />
+        <div>
+          <strong>Bro Garage</strong>
+          <span>Service desk</span>
+        </div>
+      </div>
+      <Button className="nav-icon-button" icon="pi pi-bars" onClick={toggleSlidebarMenu} />
     </Fragment>
   );
   const end = (
-    <div className="flex align-items-center">
-      <span className="mr-2">{fullName}</span>
-      <Button icon="pi pi-cog" onClick={(event) => menu.current.toggle(event)} aria-controls="popup_menu" aria-haspopup />
+    <div className="app-user-menu">
+      <span>{fullName}</span>
+      <Button className="nav-icon-button" icon="pi pi-cog" onClick={(event) => menu.current.toggle(event)} aria-controls="popup_menu" aria-haspopup />
       <Menu model={menuItems} popup ref={menu} id="popup_menu" />
     </div>
   );

@@ -101,8 +101,15 @@ const SidebarMenu = () => {
 
   return (
     isShowSlidebar && (
-      <div className="p-3 pb-0 pr-0">
-        <div className="card h-full w-20rem overflow-hidden ">
+      <aside className="app-sidebar-shell">
+        <div className="app-sidebar-card h-full w-20rem overflow-hidden">
+          <div className="sidebar-head">
+            <span className="pi pi-map"></span>
+            <div>
+              <strong>Workspace</strong>
+              <p>Navigate shop modules</p>
+            </div>
+          </div>
           <SlideMenu
             model={items}
             className="h-full w-full"
@@ -110,7 +117,7 @@ const SidebarMenu = () => {
             viewportHeight={800}
           ></SlideMenu>
         </div>
-      </div>
+      </aside>
     )
   );
 };

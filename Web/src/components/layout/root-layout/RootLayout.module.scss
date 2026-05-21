@@ -1,5 +1,6 @@
 .main_container {
   height: calc(100% - 61px);
+  min-height: calc(100vh - 61px);
 }
 
 .app_spinner {
@@ -8,4 +9,12 @@
 
 .side_bar_open {
   width: calc(100% - 318px);
+  min-width: 0;
+  overflow: auto;
+}
+
+@media (max-width: 768px) {
+  .side_bar_open {
+    width: 100%;
+  }
 }

@@ -1,5 +1,16 @@
 .app_table {
+  overflow: hidden;
+
   table {
     width: 100% !important;
+  }
+
+  :global(.p-datatable-wrapper) {
+    border: 1px solid rgba(219, 227, 239, 0.9);
+    border-radius: 8px;
+  }
+
+  :global(.p-column-title) {
+    font-weight: 800;
   }
 }

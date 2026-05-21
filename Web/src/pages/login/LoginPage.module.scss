@@ -1,12 +1,138 @@
+.login_page {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(26rem, 1fr) minmax(24rem, 29rem);
+  align-items: center;
+  gap: 3rem;
+  width: 100vw;
+  min-height: 100vh;
+  padding: 3rem clamp(1rem, 5vw, 5rem);
+  overflow: hidden;
+  background:
+    linear-gradient(120deg, rgba(2, 6, 23, 0.82), rgba(4, 47, 46, 0.68)),
+    url("../../assets/login-workshop.svg") left center / min(54vw, 48rem) no-repeat,
+    radial-gradient(circle at 82% 18%, rgba(20, 184, 166, 0.2), transparent 24rem),
+    #06101f;
+}
+
+.login_page::after {
+  content: "";
+  position: absolute;
+  inset: auto -8rem -12rem 38%;
+  height: 28rem;
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.24), transparent 68%);
+  pointer-events: none;
+}
+
+.login_art {
+  position: relative;
+  z-index: 1;
+  min-height: min(42rem, 72vh);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 22px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.10), rgba(255, 255, 255, 0.03)),
+    rgba(255, 255, 255, 0.05);
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(12px);
+}
+
+.login_art_content {
+  position: absolute;
+  left: 2rem;
+  right: 2rem;
+  bottom: 2rem;
+  max-width: 34rem;
+  color: #fff;
+}
+
+.login_art_content span {
+  display: inline-flex;
+  padding: 0.45rem 0.75rem;
+  border: 1px solid rgba(45, 212, 191, 0.35);
+  border-radius: 999px;
+  background: rgba(20, 184, 166, 0.14);
+  color: #99f6e4;
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.login_art_content h2 {
+  max-width: 32rem;
+  margin: 1rem 0;
+  color: #ffffff;
+  font-size: clamp(2rem, 4vw, 4.2rem);
+  line-height: 1.02;
+}
+
+.login_art_content p {
+  max-width: 30rem;
+  margin: 0;
+  color: rgba(226, 232, 240, 0.86);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
 .login_container {
-  width: 400px;
+  position: relative;
+  z-index: 1;
+  width: min(420px, calc(100vw - 2rem));
+  overflow: hidden;
+  justify-self: end;
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  border-radius: 18px;
+  box-shadow: 0 34px 90px rgba(0, 0, 0, 0.30);
 }
 
 .logo_container {
-  background-color: var(--surface-100);
+  padding: 2rem 1.5rem 1.25rem;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(45, 212, 191, 0.18), transparent 12rem),
+    linear-gradient(135deg, rgba(15, 118, 110, 0.16), rgba(37, 99, 235, 0.12)),
+    #ffffff;
+}
+
+.logo_container h1 {
+  margin: 0.75rem 0 0.35rem;
+  font-size: 1.65rem;
+}
+
+.logo_container p {
+  max-width: 18rem;
+  margin: 0 auto;
+  color: #64748b;
+  line-height: 1.5;
+}
+
+.login_logo {
+  display: block;
+  width: min(15rem, 78%);
+  height: 5rem;
+  object-fit: contain;
+  margin: 0 auto;
 }
 
 .login_spinner {
   top: 45%;
   left: 49%;
+}
+
+@media (max-width: 960px) {
+  .login_page {
+    grid-template-columns: 1fr;
+    padding: 1.25rem;
+    background:
+      linear-gradient(120deg, rgba(2, 6, 23, 0.88), rgba(4, 47, 46, 0.74)),
+      url("../../assets/login-workshop.svg") center / cover no-repeat,
+      #06101f;
+  }
+
+  .login_art {
+    display: none;
+  }
+
+  .login_container {
+    justify-self: center;
+  }
 }

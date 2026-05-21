@@ -54,22 +54,25 @@ const LoginPage = () => {
 
   const header = (
     <div className={classNames("text-center", classes.logo_container)}>
-      <img
-        className="w-8 m-auto h-6rem"
-        alt="Card"
-        src='/images/logo.png'
-      />
+      <img className={classes.login_logo} alt="Bro Garage" src="/images/logo.png" />
+      <h1>Bro Garage</h1>
+      <p>Workshop operations, customers, repairs, and parts in one place.</p>
     </div>
   );
 
   return (
     <Fragment>
-      <div className="flex w-screen h-screen relative">
-        <Card
-          header={header}
-          className={classNames("m-auto", classes.login_container)}
-        >
-          {!loginSuccess && (
+      <div className={classes.login_page}>
+        <section className={classes.login_art}>
+          <div className={classes.login_art_content}>
+            <span>Premium garage workspace</span>
+            <h2>Run every service order with more clarity.</h2>
+            <p>Manage vehicles, customers, inventory, quotes, and delivery status from a focused dashboard built for daily shop work.</p>
+          </div>
+        </section>
+
+        <Card header={header} className={classes.login_container}>
+          {!loginSuccess && errorMessage && (
             <Message
               className="mb-3 justify-content-start"
               severity="error"
@@ -78,27 +81,27 @@ const LoginPage = () => {
               text={errorMessage}
             />
           )}
-          <form
-            onSubmit={handleSubmit(onSubmitLogin)}
-            className="formgrid grid"
-          >
+          <form onSubmit={handleSubmit(onSubmitLogin)} className="formgrid grid">
             <div className="field col-12 p-fluid">
               <label htmlFor="UserName">{t("login.username")}</label>
-              <Controller
-                name="UserName"
-                control={control}
-                rules={{ required: t("login.usernameRequired") }}
-                render={({ field, fieldState }) => (
-                  <InputText
-                    id={field.name}
-                    {...field}
-                    autoFocus
-                    className={classNames("block w-full", {
-                      "p-invalid": fieldState.error,
-                    })}
-                  />
-                )}
-              />
+              <span className="p-input-icon-left w-full">
+                <i className="pi pi-user" />
+                <Controller
+                  name="UserName"
+                  control={control}
+                  rules={{ required: t("login.usernameRequired") }}
+                  render={({ field, fieldState }) => (
+                    <InputText
+                      id={field.name}
+                      {...field}
+                      autoFocus
+                      className={classNames("block w-full", {
+                        "p-invalid": fieldState.error,
+                      })}
+                    />
+                  )}
+                />
+              </span>
               {getFormErrorMessage("UserName")}
             </div>
 
@@ -122,12 +125,12 @@ const LoginPage = () => {
               />
               {getFormErrorMessage("Password")}
             </div>
-            <div className="flex w-full justify-content-end mr-2">
+            <div className="flex w-full">
               <Button
                 disabled={isShowSpinner}
                 label={t("login.button")}
                 icon="pi pi-check"
-                className="p-button-success"
+                className="p-button-success w-full"
               />
             </div>
           </form>

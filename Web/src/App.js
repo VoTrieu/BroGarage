@@ -19,6 +19,7 @@ function App() {
   const toastContent = useSelector((state) => state.ui.toastContent);
   const { isTokenValid } = useSelector((state) => state.auth);
   const toast = useRef();
+  const reportPageElement = <ReportPage />;
 
   useEffect(() => {
     if (toastContent?.severity) {
@@ -37,7 +38,8 @@ function App() {
           }
         />
         <Route path="/app" element={isTokenValid ? <RootLayout /> : <Navigate to="/" replace />}>
-          <Route index path="home" element={<ReportPage />} />
+          <Route index element={reportPageElement} />
+          <Route path="home" element={reportPageElement} />
           <Route path="customers" element={<CustomersPage />} />
           <Route path="customer-detail">
             <Route path="new" element={<CustomerDetailPage />} />
