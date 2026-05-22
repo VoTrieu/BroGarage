@@ -4,6 +4,11 @@ BroGarage is a full-stack garage management application. The repository contains
 
 The app helps a garage manage customers, vehicles, repair orders, maintenance cycles, spare parts, order templates, and printable/exportable service records.
 
+Admin default account:
+Username: Admin
+Password: Pa$$w0rd
+
+
 ## Project Structure
 
 - `API/` - .NET 10 Web API.
