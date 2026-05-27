@@ -312,6 +312,8 @@ const AppDataTable = (props) => {
           resizeable="true"
           responsiveLayout="stack"
           breakpoint="960px"
+          scrollable="75vh"
+          scrollHeight="75vh"
           expandedRows={expandedRows}
           onRowToggle={(e) => setExpandedRows(e.data)}
           rowExpansionTemplate={props.rowExpansionTemplate}
