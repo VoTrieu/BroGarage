@@ -25,7 +25,13 @@ public class CustomerController : BaseController
     const string NOT_FOUND_MANUFACTURER = "Hãng sản xuất không có trong hệ thống";
 
     [HttpGet("get-pagination")]
-    public async Task<ActionResult<ResponseModel<PaginationModel<CustomerResModel[]>>>> GetPagination(string? keyword = "", int typeId = 0, int pageSize = 10, int pageIndex = 1)
+    public async Task<ActionResult<ResponseModel<PaginationModel<CustomerResModel[]>>>> GetPagination(
+        string? keyword = "", 
+        int typeId = 0, 
+        int pageSize = 10, 
+        int pageIndex = 1,
+        string? orderBy = "CustomerId",
+        string sortDirection = "desc")
     {
         ResponseModel<PaginationModel<CustomerResModel[]>> response = new();
 
@@ -36,18 +42,20 @@ public class CustomerController : BaseController
                     || (string.IsNullOrEmpty(keyword) || EF.Functions.Like(EF.Functions.Collate(n.FullName ?? "", COLLATION), $"%{keyword}%"))
                 )
                 && (typeId == 0 || n.TypeId == typeId)
-            );
+            )
+            .ApplySort(orderBy, sortDirection);
 
-        int skipItem = pageSize * (pageIndex - 1);
         int totalRow = query != null ? await query.CountAsync() : 0;
-        int totalPage = Convert.ToInt32(Math.Ceiling(Convert.ToDecimal(totalRow) / pageSize));
+        var (totalPage, skipItem) = PaginationExtensions.GetPaginationMetadata(totalRow, pageSize, pageIndex);
 
         var pagination = new PaginationModel<CustomerResModel[]>()
         {
             PageSize = pageSize,
             PageIndex = pageIndex,
             TotalPage = totalPage,
-            TotalRow = totalRow
+            TotalRow = totalRow,
+            OrderBy = orderBy,
+            SortDirection = sortDirection
         };
 
         if (query == null)
@@ -58,9 +66,7 @@ public class CustomerController : BaseController
         }
 
         var data = await query
-            .OrderByDescending(n => n.CustomerId)
-            .Skip(skipItem)
-            .Take(pageSize)
+            .Paginate(pageSize, pageIndex)
             .Select(n => new CustomerResModel()
             {
                 CustomerId = n.CustomerId,

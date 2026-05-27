@@ -16,6 +16,8 @@ export const getCars = (
   pageSize = 10,
   pageIndex = 1,
   keyword = null,
+  orderBy = "CarId",
+  sortDirection = "desc",
   token = null
 ) => {
   return axios.get("/car/get-pagination", {
@@ -23,6 +25,8 @@ export const getCars = (
       pageSize,
       pageIndex,
       keyword,
+      orderBy,
+      sortDirection,
     },
     cancelToken: token,
   });

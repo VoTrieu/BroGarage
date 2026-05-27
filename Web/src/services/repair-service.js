@@ -4,13 +4,17 @@ export async function getRepairForms(
   pageSize = 10,
   pageIndex = 1,
   keyword = null,
-  searchParameters = {}
+  searchParameters = {},
+  orderBy = "OrderId",
+  sortDirection = "desc"
 ) {
   return axios.get("/order/get-pagination", {
     params: {
       pageSize,
       pageIndex,
       keyword,
+      orderBy,
+      sortDirection,
       ...searchParameters
     },
   });

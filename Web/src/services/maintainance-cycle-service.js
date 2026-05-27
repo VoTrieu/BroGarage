@@ -4,13 +4,17 @@ export async function getMaintainanceCycle(
   pageSize = 10,
   pageIndex = 1,
   keyword = null,
+  orderBy = "TemplateId",
+  sortDirection = "desc",
   token = null
 ) {
   return axios.get("/template/get-pagination", {
     params: {
       pageSize,
       pageIndex,
-      keyword
+      keyword,
+      orderBy,
+      sortDirection
     },
     cancelToken: token,
   });

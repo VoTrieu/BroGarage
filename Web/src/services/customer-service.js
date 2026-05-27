@@ -3,13 +3,17 @@ import axios from "axios";
 export async function getCustomers(
   pageSize = 10,
   pageIndex = 1,
-  keyword = null
+  keyword = null,
+  orderBy = "CustomerId",
+  sortDirection = "desc"
 ) {
   return axios.get("/customer/get-pagination", {
     params: {
       pageSize,
       pageIndex,
       keyword,
+      orderBy,
+      sortDirection,
     },
   });
 }

@@ -26,27 +26,33 @@ public class TemplateController : BaseController
     [HttpGet("get-pagination")]
     public async Task<ActionResult<ResponseModel<PaginationModel<TemplateResModel[]>>>> GetPagination(
         int carTypeId = 0,
-        int yearOfManufactureFrom = 0, int yearOfManufactureTo = 0,
-        int pageSize = 10, int pageIndex = 1)
+        int yearOfManufactureFrom = 0, 
+        int yearOfManufactureTo = 0,
+        int pageSize = 10, 
+        int pageIndex = 1,
+        string? orderBy = "TemplateId",
+        string sortDirection = "desc")
     {
         ResponseModel<PaginationModel<TemplateResModel[]>> response = new();
         var query = db.Templates
-        .Where(n =>
-            (carTypeId == 0 || n.CarTypeId == carTypeId)
-            && (yearOfManufactureFrom == 0 || n.YearOfManufactureFrom >= yearOfManufactureFrom)
-            && (yearOfManufactureTo == 0 || n.YearOfManufactureTo <= yearOfManufactureTo)
-        );
+            .Where(n =>
+                (carTypeId == 0 || n.CarTypeId == carTypeId)
+                && (yearOfManufactureFrom == 0 || n.YearOfManufactureFrom >= yearOfManufactureFrom)
+                && (yearOfManufactureTo == 0 || n.YearOfManufactureTo <= yearOfManufactureTo)
+            )
+            .ApplySort(orderBy, sortDirection);
 
-        int skipItem = pageSize * (pageIndex - 1);
         int totalRow = query != null ? await query.CountAsync() : 0;
-        int totalPage = Convert.ToInt32(Math.Ceiling(Convert.ToDecimal(totalRow) / pageSize));
+        var (totalPage, skipItem) = PaginationExtensions.GetPaginationMetadata(totalRow, pageSize, pageIndex);
 
         var pagination = new PaginationModel<TemplateResModel[]>()
         {
             PageSize = pageSize,
             PageIndex = pageIndex,
             TotalPage = totalPage,
-            TotalRow = totalRow
+            TotalRow = totalRow,
+            OrderBy = orderBy,
+            SortDirection = sortDirection
         };
 
         if (query == null)
@@ -57,9 +63,7 @@ public class TemplateController : BaseController
         }
 
         var data = await query
-            .OrderByDescending(n => n.TemplateId)
-            .Skip(skipItem)
-            .Take(pageSize)
+            .Paginate(pageSize, pageIndex)
             .Select(n => new TemplateResModel()
             {
                 TemplateId = n.TemplateId,

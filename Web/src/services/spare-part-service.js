@@ -4,6 +4,8 @@ export function getSparePart(
   pageSize = 10,
   pageIndex = 1,
   keyword = null,
+  orderBy = "ProductId",
+  sortDirection = "desc",
   token = null
 ) {
   return axios.get("/product/get-pagination", {
@@ -11,6 +13,8 @@ export function getSparePart(
       pageSize,
       pageIndex,
       keyword,
+      orderBy,
+      sortDirection,
     },
     cancelToken: token
   });

@@ -45,7 +45,12 @@ public class CarTypeController : BaseController
     }
 
     [HttpGet("get-pagination")]
-    public async Task<ActionResult<ResponseModel<PaginationModel<CarTypeResModel[]>>>> GetPagination(string? keyword = "", int pageSize = 10, int pageIndex = 1)
+    public async Task<ActionResult<ResponseModel<PaginationModel<CarTypeResModel[]>>>> GetPagination(
+        string? keyword = "", 
+        int pageSize = 10, 
+        int pageIndex = 1,
+        string? orderBy = "TypeId",
+        string sortDirection = "desc")
     {
         ResponseModel<PaginationModel<CarTypeResModel[]>> response = new();
 
@@ -53,18 +58,19 @@ public class CarTypeController : BaseController
             .Where(n =>
                 (string.IsNullOrEmpty(keyword) || EF.Functions.Like(EF.Functions.Collate(n.TypeName ?? "", COLLATION), $"%{keyword}%"))
             )
-            .OrderByDescending(n => n.TypeId);
+            .ApplySort(orderBy, sortDirection);
 
-        int skipItem = pageSize * (pageIndex - 1);
         int totalRow = query != null ? await query.CountAsync() : 0;
-        int totalPage = Convert.ToInt32(Math.Ceiling(Convert.ToDecimal(totalRow) / pageSize));
+        var (totalPage, skipItem) = PaginationExtensions.GetPaginationMetadata(totalRow, pageSize, pageIndex);
 
         var pagination = new PaginationModel<CarTypeResModel[]>()
         {
             PageSize = pageSize,
             PageIndex = pageIndex,
             TotalPage = totalPage,
-            TotalRow = totalRow
+            TotalRow = totalRow,
+            OrderBy = orderBy,
+            SortDirection = sortDirection
         };
 
         if (query == null)
@@ -75,8 +81,7 @@ public class CarTypeController : BaseController
         }
 
         var data = await query
-            .Skip(skipItem)
-            .Take(pageSize)
+            .Paginate(pageSize, pageIndex)
             .Select(n => new CarTypeResModel()
             {
                 TypeId = n.TypeId,

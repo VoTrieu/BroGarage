@@ -51,7 +51,9 @@ public class OrderController : BaseController
         string? dateOutFrom = "",
         string? dateOutTo = "",
         int pageSize = 10,
-        int pageIndex = 1
+        int pageIndex = 1,
+        string? orderBy = "OrderId",
+        string sortDirection = "desc"
     )
     {
         ResponseModel<PaginationModel<OrderResModel[]>> response = new();
@@ -135,18 +137,20 @@ public class OrderController : BaseController
                     (string.IsNullOrEmpty(keyword) || EF.Functions.Like(EF.Functions.Collate(n.Car.LicensePlate ?? "", COLLATION), $"%{keyword}%"))
                     || (string.IsNullOrEmpty(keyword) || EF.Functions.Like(EF.Functions.Collate(n.Car.Customer.FullName ?? "", COLLATION), $"%{keyword}%"))
                 )
-            );
+            )
+            .ApplySort(orderBy, sortDirection);
 
-        int skipItem = pageSize * (pageIndex - 1);
         int totalRow = query != null ? await query.CountAsync() : 0;
-        int totalPage = Convert.ToInt32(Math.Ceiling(Convert.ToDecimal(totalRow) / pageSize));
+        var (totalPage, skipItem) = PaginationExtensions.GetPaginationMetadata(totalRow, pageSize, pageIndex);
 
         var pagination = new PaginationModel<OrderResModel[]>()
         {
             PageSize = pageSize,
             PageIndex = pageIndex,
             TotalPage = totalPage,
-            TotalRow = totalRow
+            TotalRow = totalRow,
+            OrderBy = orderBy,
+            SortDirection = sortDirection
         };
 
         if (query == null)
@@ -157,10 +161,8 @@ public class OrderController : BaseController
         }
 
         var data = await query
-        .OrderByDescending(n => n.OrderId)
-        .Skip(skipItem)
-        .Take(pageSize)
-        .Select(n => new OrderResModel()
+            .Paginate(pageSize, pageIndex)
+            .Select(n => new OrderResModel()
         {
             OrderId = n.OrderId,
             CarId = n.CarId ?? 0,

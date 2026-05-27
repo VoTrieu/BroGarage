@@ -23,7 +23,12 @@ public class ProductController : BaseController
     const string EXISTS_NAME = "Tên sản phẩm đã có trong hệ thống";
 
     [HttpGet("get-pagination")]
-    public async Task<ActionResult<ResponseModel<PaginationModel<ProductResModel[]>>>> GetPagination(string? keyword = "", int pageSize = 10, int pageIndex = 1)
+    public async Task<ActionResult<ResponseModel<PaginationModel<ProductResModel[]>>>> GetPagination(
+        string? keyword = "", 
+        int pageSize = 10, 
+        int pageIndex = 1,
+        string? orderBy = "ProductId",
+        string sortDirection = "desc")
     {
         ResponseModel<PaginationModel<ProductResModel[]>> response = new();
 
@@ -35,18 +40,19 @@ public class ProductController : BaseController
                     || (string.IsNullOrEmpty(keyword) || EF.Functions.Like(EF.Functions.Collate(n.Remark ?? "", COLLATION), $"%{keyword}%"))
                 )
             )
-            .OrderByDescending(n => n.ProductId);
+            .ApplySort(orderBy, sortDirection);
 
-        int skipItem = pageSize * (pageIndex - 1);
         int totalRow = query != null ? await query.CountAsync() : 0;
-        int totalPage = Convert.ToInt32(Math.Ceiling(Convert.ToDecimal(totalRow) / pageSize));
+        var (totalPage, skipItem) = PaginationExtensions.GetPaginationMetadata(totalRow, pageSize, pageIndex);
 
         var pagination = new PaginationModel<ProductResModel[]>()
         {
             PageSize = pageSize,
             PageIndex = pageIndex,
             TotalPage = totalPage,
-            TotalRow = totalRow
+            TotalRow = totalRow,
+            OrderBy = orderBy,
+            SortDirection = sortDirection
         };
 
         if (query == null)
@@ -57,8 +63,7 @@ public class ProductController : BaseController
         }
 
         var data = await query
-            .Skip(skipItem)
-            .Take(pageSize)
+            .Paginate(pageSize, pageIndex)
             .Select(n => new ProductResModel()
             {
                 ProductId = n.ProductId,
