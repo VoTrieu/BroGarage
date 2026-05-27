@@ -40,8 +40,8 @@ namespace BroGarage.API.Data.Migrations
                 {
                     { 1, "", new DateTime(2022, 10, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 20, 14, 0, 0), 1666210440L, 1, "OIL-5W30", "5W-30 engine oil", 60, "Synthetic oil", "Lit", 180000L, null, 0 },
                     { 2, "", new DateTime(2022, 10, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 20, 14, 0, 0), 1666210440L, 1, "FILTER-OIL", "Engine oil filter", 40, "Replacement included during maintenance.", "Piece", 120000L, null, 0 },
-                    { 3, "", new DateTime(2022, 10, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 20, 14, 0, 0), 1666210440L, 1, "BRAKE-PAD", "Front brake pads", 20, "Brake parts", "Bo", 850000L, null, 0 },
-                    { 4, "", new DateTime(2022, 10, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 20, 14, 0, 0), 1666210440L, 1, "LABOR-GEN", "General inspection", 0, "Service", "Lan", 300000L, null, 0 }
+                    { 3, "", new DateTime(2022, 10, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 20, 14, 0, 0), 1666210440L, 1, "BRAKE-PAD", "Front brake pads", 20, "Brake parts", "Set", 850000L, null, 0 },
+                    { 4, "", new DateTime(2022, 10, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 20, 14, 0, 0), 1666210440L, 1, "LABOR-GEN", "General inspection", 0, "Service", "Time", 300000L, null, 0 }
                 });
 
             migrationBuilder.InsertData(
