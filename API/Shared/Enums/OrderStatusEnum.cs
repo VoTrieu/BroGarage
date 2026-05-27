@@ -3,22 +3,22 @@
     public class OrderStatusEnum
     {
         /// <summary>
-        /// Báo giá
+        /// Price Quotation
         /// </summary>
         public const int PRICE_QUOTATION_1 = 1;
 
         /// <summary>
-        /// Đang sửa chữa
+        /// In progress
         /// </summary>
         public const int REPAIRING_2 = 2;
 
         /// <summary>
-        /// Chờ giao xe
+        /// Ready for delivery
         /// </summary>
         public const int WAITING_FOR_DELEVERY_3 = 3;
 
         /// <summary>
-        /// Hoàn thành
+        /// Completed
         /// </summary>
         public const int COMPLETED_4 = 4;
     }

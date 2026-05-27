@@ -9,7 +9,7 @@ namespace BroGarage.API.Data.Seeds
             new OrderTypeEntity()
             {
                 TypeId = 1,
-                TypeName = "Bảo dưỡng",
+                TypeName = "Maintenance",
                 CreatedDate = CreatedDate,
                 CreatedTime = CreatedTime,
                 CreatedTimeStamp = CreatedTimeStamp,
@@ -18,7 +18,7 @@ namespace BroGarage.API.Data.Seeds
             new OrderTypeEntity()
             {
                 TypeId = 2,
-                TypeName = "Sửa chữa",
+                TypeName = "Repair",
                 CreatedDate = CreatedDate,
                 CreatedTime = CreatedTime,
                 CreatedTimeStamp = CreatedTimeStamp,

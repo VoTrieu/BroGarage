@@ -302,7 +302,7 @@ namespace BroGarage.API.Data.Migrations
                         new
                         {
                             CustomerId = 1,
-                            Address = "12 Nguyen Trai, Quan 1, TP.HCM",
+                            Address = "12 Nguyen Trai, District 1, TP.HCM",
                             AvatarUrl = "",
                             CreatedDate = new DateTime(2022, 10, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedTime = new TimeSpan(0, 20, 14, 0, 0),
@@ -310,7 +310,7 @@ namespace BroGarage.API.Data.Migrations
                             CreatedUserId = 1,
                             Email = "an.nguyen@example.com",
                             FullName = "Nguyen Van An",
-                            Note = "Khach hang ca nhan",
+                            Note = "Personal customer",
                             PhoneNumber = "0901000001",
                             Representative = "",
                             TaxCode = "",
@@ -320,7 +320,7 @@ namespace BroGarage.API.Data.Migrations
                         new
                         {
                             CustomerId = 2,
-                            Address = "45 Le Loi, Quan 3, TP.HCM",
+                            Address = "45 Le Loi, District 3, TP.HCM",
                             AvatarUrl = "",
                             CreatedDate = new DateTime(2022, 10, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedTime = new TimeSpan(0, 20, 14, 0, 0),
@@ -328,7 +328,7 @@ namespace BroGarage.API.Data.Migrations
                             CreatedUserId = 1,
                             Email = "binh.tran@example.com",
                             FullName = "Tran Thi Binh",
-                            Note = "Can nhac bao duong dinh ky",
+                            Note = "Regular maintenance is necessary.",
                             PhoneNumber = "0901000002",
                             Representative = "",
                             TaxCode = "",
@@ -345,8 +345,8 @@ namespace BroGarage.API.Data.Migrations
                             CreatedTimeStamp = 1666210440L,
                             CreatedUserId = 1,
                             Email = "service@minhlong.example.com",
-                            FullName = "Cong ty Minh Long",
-                            Note = "Khach hang doanh nghiep",
+                            FullName = "Minh Long Inc",
+                            Note = "Bussiness customer",
                             PhoneNumber = "0901000003",
                             Representative = "Le Minh",
                             TaxCode = "0312345678",
@@ -395,7 +395,7 @@ namespace BroGarage.API.Data.Migrations
                             CreatedTime = new TimeSpan(0, 20, 14, 0, 0),
                             CreatedTimeStamp = 1666210440L,
                             CreatedUserId = 1,
-                            TypeName = "Cá nhân",
+                            TypeName = "Personal",
                             UpdatedUserId = 0
                         },
                         new
@@ -405,7 +405,7 @@ namespace BroGarage.API.Data.Migrations
                             CreatedTime = new TimeSpan(0, 20, 14, 0, 0),
                             CreatedTimeStamp = 1666210440L,
                             CreatedUserId = 1,
-                            TypeName = "Doanh nghiệp",
+                            TypeName = "Businesses",
                             UpdatedUserId = 0
                         });
                 });
@@ -539,7 +539,7 @@ namespace BroGarage.API.Data.Migrations
                         new
                         {
                             OrderDetailId = 1,
-                            Comment = "Thay dau dong co",
+                            Comment = "Change engine oil",
                             CreatedDate = new DateTime(2022, 10, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedTime = new TimeSpan(0, 20, 14, 0, 0),
                             CreatedTimeStamp = 1666210440L,
@@ -554,7 +554,7 @@ namespace BroGarage.API.Data.Migrations
                         new
                         {
                             OrderDetailId = 2,
-                            Comment = "Thay loc dau",
+                            Comment = "Replace the oil filter",
                             CreatedDate = new DateTime(2022, 10, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedTime = new TimeSpan(0, 20, 14, 0, 0),
                             CreatedTimeStamp = 1666210440L,
@@ -569,7 +569,7 @@ namespace BroGarage.API.Data.Migrations
                         new
                         {
                             OrderDetailId = 3,
-                            Comment = "Du kien thay ma phanh truoc",
+                            Comment = "Replace front brake pads",
                             CreatedDate = new DateTime(2022, 10, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedTime = new TimeSpan(0, 20, 14, 0, 0),
                             CreatedTimeStamp = 1666210440L,
@@ -584,7 +584,7 @@ namespace BroGarage.API.Data.Migrations
                         new
                         {
                             OrderDetailId = 4,
-                            Comment = "Cong kiem tra tong quat",
+                            Comment = "General inspection",
                             CreatedDate = new DateTime(2022, 10, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedTime = new TimeSpan(0, 20, 14, 0, 0),
                             CreatedTimeStamp = 1666210440L,
@@ -723,14 +723,14 @@ namespace BroGarage.API.Data.Migrations
                             CreatedTime = new TimeSpan(0, 20, 14, 0, 0),
                             CreatedTimeStamp = 1666210440L,
                             CreatedUserId = 1,
-                            CustomerNote = "Kiem tra tieng on khi chay cham",
+                            CustomerNote = "Check for noise when running at low speed.",
                             DateIn = new DateTime(2026, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOutActual = new DateTime(2026, 5, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOutEstimated = new DateTime(2026, 5, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Diagnosis = "Bao duong dinh ky",
+                            Diagnosis = "Regular maintenance",
                             Discount = 50000L,
                             ExpiredInDate = new DateTime(2026, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            InternalNote = "Da thay dau va loc dau",
+                            InternalNote = "The oil and oil filter have been changed",
                             IsInvoice = true,
                             ODOCurrent = 25000m,
                             ODONext = 30000m,
@@ -753,13 +753,13 @@ namespace BroGarage.API.Data.Migrations
                             CreatedTime = new TimeSpan(0, 20, 14, 0, 0),
                             CreatedTimeStamp = 1666210440L,
                             CreatedUserId = 1,
-                            CustomerNote = "Can bao gia truoc khi thay phu tung",
+                            CustomerNote = "A price quote is required before replacing any parts",
                             DateIn = new DateTime(2026, 5, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOutEstimated = new DateTime(2026, 5, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Diagnosis = "Phanh truoc phat tieng keu",
+                            Diagnosis = "The front brakes are making a noise",
                             Discount = 0L,
                             ExpiredInDate = new DateTime(2026, 11, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            InternalNote = "Dang kiem tra he thong phanh",
+                            InternalNote = "Checking the braking system",
                             IsInvoice = false,
                             ODOCurrent = 42000m,
                             ODONext = 47000m,
@@ -814,7 +814,7 @@ namespace BroGarage.API.Data.Migrations
                             CreatedTime = new TimeSpan(0, 20, 14, 0, 0),
                             CreatedTimeStamp = 1666210440L,
                             CreatedUserId = 1,
-                            StatusName = "Báo giá",
+                            StatusName = "Price Quotation",
                             UpdatedUserId = 0
                         },
                         new
@@ -824,7 +824,7 @@ namespace BroGarage.API.Data.Migrations
                             CreatedTime = new TimeSpan(0, 20, 14, 0, 0),
                             CreatedTimeStamp = 1666210440L,
                             CreatedUserId = 1,
-                            StatusName = "Đang sửa chữa",
+                            StatusName = "In progress",
                             UpdatedUserId = 0
                         },
                         new
@@ -834,7 +834,7 @@ namespace BroGarage.API.Data.Migrations
                             CreatedTime = new TimeSpan(0, 20, 14, 0, 0),
                             CreatedTimeStamp = 1666210440L,
                             CreatedUserId = 1,
-                            StatusName = "Chờ giao xe",
+                            StatusName = "Ready for delivery",
                             UpdatedUserId = 0
                         },
                         new
@@ -844,7 +844,7 @@ namespace BroGarage.API.Data.Migrations
                             CreatedTime = new TimeSpan(0, 20, 14, 0, 0),
                             CreatedTimeStamp = 1666210440L,
                             CreatedUserId = 1,
-                            StatusName = "Hoàn thành",
+                            StatusName = "Completed",
                             UpdatedUserId = 0
                         });
                 });
@@ -889,7 +889,7 @@ namespace BroGarage.API.Data.Migrations
                             CreatedTime = new TimeSpan(0, 20, 14, 0, 0),
                             CreatedTimeStamp = 1666210440L,
                             CreatedUserId = 1,
-                            TypeName = "Bảo dưỡng",
+                            TypeName = "Maintenance",
                             UpdatedUserId = 0
                         },
                         new
@@ -899,7 +899,7 @@ namespace BroGarage.API.Data.Migrations
                             CreatedTime = new TimeSpan(0, 20, 14, 0, 0),
                             CreatedTimeStamp = 1666210440L,
                             CreatedUserId = 1,
-                            TypeName = "Sửa chữa",
+                            TypeName = "Repair",
                             UpdatedUserId = 0
                         });
                 });
@@ -981,9 +981,9 @@ namespace BroGarage.API.Data.Migrations
                             CreatedTimeStamp = 1666210440L,
                             CreatedUserId = 1,
                             ProductCode = "OIL-5W30",
-                            ProductName = "Dau dong co 5W-30",
+                            ProductName = "5W-30 engine oil",
                             Quantity = 60,
-                            Remark = "Dau tong hop",
+                            Remark = "Synthetic oil",
                             UnitName = "Lit",
                             UnitPrice = 180000L,
                             UpdatedUserId = 0
@@ -997,10 +997,10 @@ namespace BroGarage.API.Data.Migrations
                             CreatedTimeStamp = 1666210440L,
                             CreatedUserId = 1,
                             ProductCode = "FILTER-OIL",
-                            ProductName = "Loc dau dong co",
+                            ProductName = "Engine oil filter",
                             Quantity = 40,
-                            Remark = "Thay kem khi bao duong",
-                            UnitName = "Cai",
+                            Remark = "Replacement included during maintenance.",
+                            UnitName = "Piece",
                             UnitPrice = 120000L,
                             UpdatedUserId = 0
                         },
@@ -1013,9 +1013,9 @@ namespace BroGarage.API.Data.Migrations
                             CreatedTimeStamp = 1666210440L,
                             CreatedUserId = 1,
                             ProductCode = "BRAKE-PAD",
-                            ProductName = "Bo ma phanh truoc",
+                            ProductName = "Front brake pads",
                             Quantity = 20,
-                            Remark = "Phu tung phanh",
+                            Remark = "Brake parts",
                             UnitName = "Bo",
                             UnitPrice = 850000L,
                             UpdatedUserId = 0
@@ -1029,9 +1029,9 @@ namespace BroGarage.API.Data.Migrations
                             CreatedTimeStamp = 1666210440L,
                             CreatedUserId = 1,
                             ProductCode = "LABOR-GEN",
-                            ProductName = "Cong kiem tra tong quat",
+                            ProductName = "General inspection",
                             Quantity = 0,
-                            Remark = "Dich vu",
+                            Remark = "Service",
                             UnitName = "Lan",
                             UnitPrice = 300000L,
                             UpdatedUserId = 0
@@ -1236,7 +1236,7 @@ namespace BroGarage.API.Data.Migrations
                             CreatedTime = new TimeSpan(0, 20, 14, 0, 0),
                             CreatedTimeStamp = 1666210440L,
                             CreatedUserId = 1,
-                            Note = "Bao duong Toyota Vios moi 5.000 km",
+                            Note = "5,000 km Maintenance for New Toyota Vios",
                             UpdatedUserId = 0,
                             YearOfManufactureFrom = 2018,
                             YearOfManufactureTo = 2023
@@ -1249,7 +1249,7 @@ namespace BroGarage.API.Data.Migrations
                             CreatedTime = new TimeSpan(0, 20, 14, 0, 0),
                             CreatedTimeStamp = 1666210440L,
                             CreatedUserId = 1,
-                            Note = "Bao duong Honda Civic dinh ky",
+                            Note = "Regular maintenance for Honda Civic",
                             UpdatedUserId = 0,
                             YearOfManufactureFrom = 2017,
                             YearOfManufactureTo = 2022
@@ -1316,7 +1316,7 @@ namespace BroGarage.API.Data.Migrations
                             CreatedTime = new TimeSpan(0, 20, 14, 0, 0),
                             CreatedTimeStamp = 1666210440L,
                             CreatedUserId = 0,
-                            FullName = "Quản trị viên",
+                            FullName = "Admin",
                             PasswordHash = "9c8bddf81ddbcdb97f891eda3cd108376a90fb2d45f4f0276cdfc8e3feaba2ea",
                             Salt = "uh4naWyaApHldoTdVgLaOCi853g66HOIg51KMhhdo0vSZFCCoZsleyTVNVKUg7Ds1pfmSgGkyfpthBcpcpTP7fOx6C9uFWBpNI6WBKiVFzXYk9bkKin1JuVBYhaUXFHJ",
                             UpdatedUserId = 0,

@@ -19,11 +19,11 @@ namespace BroGarage.API.Data.Entities
         public virtual CarEntity Car { get; set; } = null!;
 
         /// <summary>
-        /// Trạng thái:
-        /// 1: Báo giá
-        /// 2: Đang sửa chữa
-        /// 3: Chờ giao xe
-        /// 4: Hoàn thành
+        /// Status:
+        /// 1: Price Quotation
+        /// 2: In progress
+        /// 3: Ready for delivery
+        /// 4: Completed
         /// </summary>
         public int? StatusId { get; set; } = OrderStatusEnum.PRICE_QUOTATION_1;
 

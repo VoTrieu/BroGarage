@@ -9,7 +9,7 @@ namespace BroGarage.API.Data.Seeds
             new CustomerTypeEntity()
             {
                 TypeId = 1,
-                TypeName = "Cá nhân",
+                TypeName = "Personal",
                 CreatedDate = CreatedDate,
                 CreatedTime = CreatedTime,
                 CreatedTimeStamp = CreatedTimeStamp,
@@ -18,7 +18,7 @@ namespace BroGarage.API.Data.Seeds
             new CustomerTypeEntity()
             {
                 TypeId = 2,
-                TypeName = "Doanh nghiệp",
+                TypeName = "Businesses",
                 CreatedDate = CreatedDate,
                 CreatedTime = CreatedTime,
                 CreatedTimeStamp = CreatedTimeStamp,

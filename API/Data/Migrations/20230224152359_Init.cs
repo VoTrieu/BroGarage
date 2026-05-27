@@ -413,8 +413,8 @@ namespace BroGarage.API.Data.Migrations
                 columns: new[] { "TypeId", "CreatedDate", "CreatedTime", "CreatedTimeStamp", "CreatedUserId", "TypeName", "UpdatedDateTime", "UpdatedUserId" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2022, 10, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 20, 14, 0, 0), 1666210440L, 1, "Cá nhân", null, 0 },
-                    { 2, new DateTime(2022, 10, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 20, 14, 0, 0), 1666210440L, 1, "Doanh nghiệp", null, 0 }
+                    { 1, new DateTime(2022, 10, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 20, 14, 0, 0), 1666210440L, 1, "Personal", null, 0 },
+                    { 2, new DateTime(2022, 10, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 20, 14, 0, 0), 1666210440L, 1, "Businesses", null, 0 }
                 });
 
             migrationBuilder.InsertData(
@@ -422,10 +422,10 @@ namespace BroGarage.API.Data.Migrations
                 columns: new[] { "StatusId", "CreatedDate", "CreatedTime", "CreatedTimeStamp", "CreatedUserId", "StatusName", "UpdatedDateTime", "UpdatedUserId" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2022, 10, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 20, 14, 0, 0), 1666210440L, 1, "Báo giá", null, 0 },
-                    { 2, new DateTime(2022, 10, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 20, 14, 0, 0), 1666210440L, 1, "Đang sửa chữa", null, 0 },
-                    { 3, new DateTime(2022, 10, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 20, 14, 0, 0), 1666210440L, 1, "Chờ giao xe", null, 0 },
-                    { 4, new DateTime(2022, 10, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 20, 14, 0, 0), 1666210440L, 1, "Hoàn thành", null, 0 }
+                    { 1, new DateTime(2022, 10, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 20, 14, 0, 0), 1666210440L, 1, "Price Quotation", null, 0 },
+                    { 2, new DateTime(2022, 10, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 20, 14, 0, 0), 1666210440L, 1, "In progress", null, 0 },
+                    { 3, new DateTime(2022, 10, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 20, 14, 0, 0), 1666210440L, 1, "Ready for delivery", null, 0 },
+                    { 4, new DateTime(2022, 10, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 20, 14, 0, 0), 1666210440L, 1, "Completed", null, 0 }
                 });
 
             migrationBuilder.InsertData(
@@ -433,14 +433,14 @@ namespace BroGarage.API.Data.Migrations
                 columns: new[] { "TypeId", "CreatedDate", "CreatedTime", "CreatedTimeStamp", "CreatedUserId", "TypeName", "UpdatedDateTime", "UpdatedUserId" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2022, 10, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 20, 14, 0, 0), 1666210440L, 1, "Bảo dưỡng", null, 0 },
-                    { 2, new DateTime(2022, 10, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 20, 14, 0, 0), 1666210440L, 1, "Sửa chữa", null, 0 }
+                    { 1, new DateTime(2022, 10, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 20, 14, 0, 0), 1666210440L, 1, "Maintenance", null, 0 },
+                    { 2, new DateTime(2022, 10, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 20, 14, 0, 0), 1666210440L, 1, "Repair", null, 0 }
                 });
 
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "UserId", "CreatedDate", "CreatedTime", "CreatedTimeStamp", "CreatedUserId", "FullName", "PasswordHash", "Salt", "UpdatedDateTime", "UpdatedUserId", "UserName" },
-                values: new object[] { 1, new DateTime(2022, 10, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 20, 14, 0, 0), 1666210440L, 0, "Quản trị viên", "ea871309f6e9a5490bd909aaf2f80f57a7dca87397af1d454c95652fc4201deb", "ztSiY7kw5joGzZcwdtKqztSiY7kw5joGzZcwdtKqztSiY7kw5joGzZcwdtKqztSiY7kw5joGzZcwdtKqztSiY7kw5joGzZcwdtKqztSiY7kw5joGzZcwdtKqztSiY7kw", null, 0, "admin" });
+                values: new object[] { 1, new DateTime(2022, 10, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 20, 14, 0, 0), 1666210440L, 0, "Admin", "ea871309f6e9a5490bd909aaf2f80f57a7dca87397af1d454c95652fc4201deb", "ztSiY7kw5joGzZcwdtKqztSiY7kw5joGzZcwdtKqztSiY7kw5joGzZcwdtKqztSiY7kw5joGzZcwdtKqztSiY7kw5joGzZcwdtKqztSiY7kw5joGzZcwdtKqztSiY7kw", null, 0, "admin" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Cars_CarTypeId",

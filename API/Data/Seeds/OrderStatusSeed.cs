@@ -9,7 +9,7 @@ namespace BroGarage.API.Data.Seeds
             new OrderStatusEntity()
             {
                 StatusId = 1,
-                StatusName = "Báo giá",
+                StatusName = "Price Quotation",
                 CreatedDate = CreatedDate,
                 CreatedTime = CreatedTime,
                 CreatedTimeStamp = CreatedTimeStamp,
@@ -18,7 +18,7 @@ namespace BroGarage.API.Data.Seeds
             new OrderStatusEntity()
             {
                 StatusId = 2,
-                StatusName = "Đang sửa chữa",
+                StatusName = "In progress",
                 CreatedDate = CreatedDate,
                 CreatedTime = CreatedTime,
                 CreatedTimeStamp = CreatedTimeStamp,
@@ -27,7 +27,7 @@ namespace BroGarage.API.Data.Seeds
             new OrderStatusEntity()
             {
                 StatusId = 3,
-                StatusName = "Chờ giao xe",
+                StatusName = "Ready for delivery",
                 CreatedDate = CreatedDate,
                 CreatedTime = CreatedTime,
                 CreatedTimeStamp = CreatedTimeStamp,
@@ -36,7 +36,7 @@ namespace BroGarage.API.Data.Seeds
             new OrderStatusEntity()
             {
                 StatusId = 4,
-                StatusName = "Hoàn thành",
+                StatusName = "Completed",
                 CreatedDate = CreatedDate,
                 CreatedTime = CreatedTime,
                 CreatedTimeStamp = CreatedTimeStamp,

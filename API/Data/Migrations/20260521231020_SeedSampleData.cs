@@ -18,9 +18,9 @@ namespace BroGarage.API.Data.Migrations
                 columns: new[] { "CustomerId", "Address", "AvatarUrl", "CreatedDate", "CreatedTime", "CreatedTimeStamp", "CreatedUserId", "Email", "FullName", "Note", "PhoneNumber", "Representative", "TaxCode", "TypeId", "UpdatedDateTime", "UpdatedUserId" },
                 values: new object[,]
                 {
-                    { 1, "12 Nguyen Trai, Quan 1, TP.HCM", "", new DateTime(2022, 10, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 20, 14, 0, 0), 1666210440L, 1, "an.nguyen@example.com", "Nguyen Van An", "Khach hang ca nhan", "0901000001", "", "", 1, null, 0 },
-                    { 2, "45 Le Loi, Quan 3, TP.HCM", "", new DateTime(2022, 10, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 20, 14, 0, 0), 1666210440L, 1, "binh.tran@example.com", "Tran Thi Binh", "Can nhac bao duong dinh ky", "0901000002", "", "", 1, null, 0 },
-                    { 3, "88 Dien Bien Phu, Binh Thanh, TP.HCM", "", new DateTime(2022, 10, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 20, 14, 0, 0), 1666210440L, 1, "service@minhlong.example.com", "Cong ty Minh Long", "Khach hang doanh nghiep", "0901000003", "Le Minh", "0312345678", 2, null, 0 }
+                    { 1, "12 Nguyen Trai, District 1, TP.HCM", "", new DateTime(2022, 10, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 20, 14, 0, 0), 1666210440L, 1, "an.nguyen@example.com", "Nguyen Van An", "Personal customer", "0901000001", "", "", 1, null, 0 },
+                    { 2, "45 Le Loi, District 3, TP.HCM", "", new DateTime(2022, 10, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 20, 14, 0, 0), 1666210440L, 1, "binh.tran@example.com", "Tran Thi Binh", "Regular maintenance is necessary.", "0901000002", "", "", 1, null, 0 },
+                    { 3, "88 Dien Bien Phu, Binh Thanh, TP.HCM", "", new DateTime(2022, 10, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 20, 14, 0, 0), 1666210440L, 1, "service@minhlong.example.com", "Minh Long Inc", "Bussiness customer", "0901000003", "Le Minh", "0312345678", 2, null, 0 }
                 });
 
             migrationBuilder.InsertData(
@@ -38,10 +38,10 @@ namespace BroGarage.API.Data.Migrations
                 columns: new[] { "ProductId", "AvatarUrl", "CreatedDate", "CreatedTime", "CreatedTimeStamp", "CreatedUserId", "ProductCode", "ProductName", "Quantity", "Remark", "UnitName", "UnitPrice", "UpdatedDateTime", "UpdatedUserId" },
                 values: new object[,]
                 {
-                    { 1, "", new DateTime(2022, 10, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 20, 14, 0, 0), 1666210440L, 1, "OIL-5W30", "Dau dong co 5W-30", 60, "Dau tong hop", "Lit", 180000L, null, 0 },
-                    { 2, "", new DateTime(2022, 10, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 20, 14, 0, 0), 1666210440L, 1, "FILTER-OIL", "Loc dau dong co", 40, "Thay kem khi bao duong", "Cai", 120000L, null, 0 },
-                    { 3, "", new DateTime(2022, 10, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 20, 14, 0, 0), 1666210440L, 1, "BRAKE-PAD", "Bo ma phanh truoc", 20, "Phu tung phanh", "Bo", 850000L, null, 0 },
-                    { 4, "", new DateTime(2022, 10, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 20, 14, 0, 0), 1666210440L, 1, "LABOR-GEN", "Cong kiem tra tong quat", 0, "Dich vu", "Lan", 300000L, null, 0 }
+                    { 1, "", new DateTime(2022, 10, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 20, 14, 0, 0), 1666210440L, 1, "OIL-5W30", "5W-30 engine oil", 60, "Synthetic oil", "Lit", 180000L, null, 0 },
+                    { 2, "", new DateTime(2022, 10, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 20, 14, 0, 0), 1666210440L, 1, "FILTER-OIL", "Engine oil filter", 40, "Replacement included during maintenance.", "Piece", 120000L, null, 0 },
+                    { 3, "", new DateTime(2022, 10, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 20, 14, 0, 0), 1666210440L, 1, "BRAKE-PAD", "Front brake pads", 20, "Brake parts", "Bo", 850000L, null, 0 },
+                    { 4, "", new DateTime(2022, 10, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 20, 14, 0, 0), 1666210440L, 1, "LABOR-GEN", "General inspection", 0, "Service", "Lan", 300000L, null, 0 }
                 });
 
             migrationBuilder.InsertData(
@@ -70,8 +70,8 @@ namespace BroGarage.API.Data.Migrations
                 columns: new[] { "TemplateId", "CarTypeId", "CreatedDate", "CreatedTime", "CreatedTimeStamp", "CreatedUserId", "Note", "UpdatedDateTime", "UpdatedUserId", "YearOfManufactureFrom", "YearOfManufactureTo" },
                 values: new object[,]
                 {
-                    { 1, 1, new DateTime(2022, 10, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 20, 14, 0, 0), 1666210440L, 1, "Bao duong Toyota Vios moi 5.000 km", null, 0, 2018, 2023 },
-                    { 2, 3, new DateTime(2022, 10, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 20, 14, 0, 0), 1666210440L, 1, "Bao duong Honda Civic dinh ky", null, 0, 2017, 2022 }
+                    { 1, 1, new DateTime(2022, 10, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 20, 14, 0, 0), 1666210440L, 1, "5,000 km Maintenance for New Toyota Vios", null, 0, 2018, 2023 },
+                    { 2, 3, new DateTime(2022, 10, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 20, 14, 0, 0), 1666210440L, 1, "Regular maintenance for Honda Civic", null, 0, 2017, 2022 }
                 });
 
             migrationBuilder.InsertData(
@@ -79,8 +79,8 @@ namespace BroGarage.API.Data.Migrations
                 columns: new[] { "OrderId", "AdvancePayment", "CarId", "CreatedDate", "CreatedTime", "CreatedTimeStamp", "CreatedUserId", "CustomerNote", "DateIn", "DateOutActual", "DateOutEstimated", "Diagnosis", "Discount", "ExpiredInDate", "InternalNote", "IsInvoice", "ODOCurrent", "ODONext", "ODOUnit", "OrderCode", "OrderDate", "PaymentMethod", "StatusId", "TemplateId", "TypeId", "UpdatedDateTime", "UpdatedUserId", "VAT" },
                 values: new object[,]
                 {
-                    { 1, 300000L, 1, new DateTime(2022, 10, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 20, 14, 0, 0), 1666210440L, 1, "Kiem tra tieng on khi chay cham", new DateTime(2026, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2026, 5, 2, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2026, 5, 2, 0, 0, 0, 0, DateTimeKind.Unspecified), "Bao duong dinh ky", 50000L, new DateTime(2026, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Da thay dau va loc dau", true, 25000m, 30000m, "km", "BG-000001", new DateTime(2026, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "CASH", 4, 1, 1, null, 0, 0.10m },
-                    { 2, 500000L, 2, new DateTime(2022, 10, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 20, 14, 0, 0), 1666210440L, 1, "Can bao gia truoc khi thay phu tung", new DateTime(2026, 5, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), null, new DateTime(2026, 5, 17, 0, 0, 0, 0, DateTimeKind.Unspecified), "Phanh truoc phat tieng keu", 0L, new DateTime(2026, 11, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), "Dang kiem tra he thong phanh", false, 42000m, 47000m, "km", "BG-000002", new DateTime(2026, 5, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), "TRANSFER", 2, null, 2, null, 0, 0.10m }
+                    { 1, 300000L, 1, new DateTime(2022, 10, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 20, 14, 0, 0), 1666210440L, 1, "Check for noise when running at low speed.", new DateTime(2026, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2026, 5, 2, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2026, 5, 2, 0, 0, 0, 0, DateTimeKind.Unspecified), "Regular maintenance", 50000L, new DateTime(2026, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "The oil and oil filter have been changed", true, 25000m, 30000m, "km", "BG-000001", new DateTime(2026, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "CASH", 4, 1, 1, null, 0, 0.10m },
+                    { 2, 500000L, 2, new DateTime(2022, 10, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 20, 14, 0, 0), 1666210440L, 1, "A price quote is required before replacing any parts", new DateTime(2026, 5, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), null, new DateTime(2026, 5, 17, 0, 0, 0, 0, DateTimeKind.Unspecified), "The front brakes are making a noise", 0L, new DateTime(2026, 11, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), "Checking the braking system", false, 42000m, 47000m, "km", "BG-000002", new DateTime(2026, 5, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), "TRANSFER", 2, null, 2, null, 0, 0.10m }
                 });
 
             migrationBuilder.InsertData(
@@ -99,10 +99,10 @@ namespace BroGarage.API.Data.Migrations
                 columns: new[] { "OrderDetailId", "Comment", "CreatedDate", "CreatedTime", "CreatedTimeStamp", "CreatedUserId", "IsHideProduct", "OrderId", "ProductId", "Quantity", "UnitPrice", "UpdatedDateTime", "UpdatedUserId" },
                 values: new object[,]
                 {
-                    { 1, "Thay dau dong co", new DateTime(2022, 10, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 20, 14, 0, 0), 1666210440L, 1, false, 1, 1, 4, 180000L, null, 0 },
-                    { 2, "Thay loc dau", new DateTime(2022, 10, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 20, 14, 0, 0), 1666210440L, 1, false, 1, 2, 1, 120000L, null, 0 },
-                    { 3, "Du kien thay ma phanh truoc", new DateTime(2022, 10, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 20, 14, 0, 0), 1666210440L, 1, false, 2, 3, 1, 850000L, null, 0 },
-                    { 4, "Cong kiem tra tong quat", new DateTime(2022, 10, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 20, 14, 0, 0), 1666210440L, 1, false, 2, 4, 1, 300000L, null, 0 }
+                    { 1, "Change engine oil", new DateTime(2022, 10, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 20, 14, 0, 0), 1666210440L, 1, false, 1, 1, 4, 180000L, null, 0 },
+                    { 2, "Replace the oil filter", new DateTime(2022, 10, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 20, 14, 0, 0), 1666210440L, 1, false, 1, 2, 1, 120000L, null, 0 },
+                    { 3, "Replace front brake pads", new DateTime(2022, 10, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 20, 14, 0, 0), 1666210440L, 1, false, 2, 3, 1, 850000L, null, 0 },
+                    { 4, "General inspection", new DateTime(2022, 10, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 20, 14, 0, 0), 1666210440L, 1, false, 2, 4, 1, 300000L, null, 0 }
                 });
         }
 

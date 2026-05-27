@@ -248,7 +248,7 @@ namespace BroGarage.API.Data.Migrations
                             CreatedTime = new TimeSpan(0, 20, 14, 0, 0),
                             CreatedTimeStamp = 1666210440L,
                             CreatedUserId = 1,
-                            TypeName = "Cá nhân",
+                            TypeName = "Personal",
                             UpdatedUserId = 0
                         },
                         new
@@ -258,7 +258,7 @@ namespace BroGarage.API.Data.Migrations
                             CreatedTime = new TimeSpan(0, 20, 14, 0, 0),
                             CreatedTimeStamp = 1666210440L,
                             CreatedUserId = 1,
-                            TypeName = "Doanh nghiệp",
+                            TypeName = "Businesses",
                             UpdatedUserId = 0
                         });
                 });
@@ -517,7 +517,7 @@ namespace BroGarage.API.Data.Migrations
                             CreatedTime = new TimeSpan(0, 20, 14, 0, 0),
                             CreatedTimeStamp = 1666210440L,
                             CreatedUserId = 1,
-                            StatusName = "Báo giá",
+                            StatusName = "Price Quotation",
                             UpdatedUserId = 0
                         },
                         new
@@ -527,7 +527,7 @@ namespace BroGarage.API.Data.Migrations
                             CreatedTime = new TimeSpan(0, 20, 14, 0, 0),
                             CreatedTimeStamp = 1666210440L,
                             CreatedUserId = 1,
-                            StatusName = "Đang sửa chữa",
+                            StatusName = "In progress",
                             UpdatedUserId = 0
                         },
                         new
@@ -537,7 +537,7 @@ namespace BroGarage.API.Data.Migrations
                             CreatedTime = new TimeSpan(0, 20, 14, 0, 0),
                             CreatedTimeStamp = 1666210440L,
                             CreatedUserId = 1,
-                            StatusName = "Chờ giao xe",
+                            StatusName = "Ready for delivery",
                             UpdatedUserId = 0
                         },
                         new
@@ -547,7 +547,7 @@ namespace BroGarage.API.Data.Migrations
                             CreatedTime = new TimeSpan(0, 20, 14, 0, 0),
                             CreatedTimeStamp = 1666210440L,
                             CreatedUserId = 1,
-                            StatusName = "Hoàn thành",
+                            StatusName = "Completed",
                             UpdatedUserId = 0
                         });
                 });
@@ -592,7 +592,7 @@ namespace BroGarage.API.Data.Migrations
                             CreatedTime = new TimeSpan(0, 20, 14, 0, 0),
                             CreatedTimeStamp = 1666210440L,
                             CreatedUserId = 1,
-                            TypeName = "Bảo dưỡng",
+                            TypeName = "Maintenance",
                             UpdatedUserId = 0
                         },
                         new
@@ -602,7 +602,7 @@ namespace BroGarage.API.Data.Migrations
                             CreatedTime = new TimeSpan(0, 20, 14, 0, 0),
                             CreatedTimeStamp = 1666210440L,
                             CreatedUserId = 1,
-                            TypeName = "Sửa chữa",
+                            TypeName = "Repair",
                             UpdatedUserId = 0
                         });
                 });
@@ -880,7 +880,7 @@ namespace BroGarage.API.Data.Migrations
                             CreatedTime = new TimeSpan(0, 20, 14, 0, 0),
                             CreatedTimeStamp = 1666210440L,
                             CreatedUserId = 0,
-                            FullName = "Quản trị viên",
+                            FullName = "Admin",
                             PasswordHash = "ea871309f6e9a5490bd909aaf2f80f57a7dca87397af1d454c95652fc4201deb",
                             Salt = "ztSiY7kw5joGzZcwdtKqztSiY7kw5joGzZcwdtKqztSiY7kw5joGzZcwdtKqztSiY7kw5joGzZcwdtKqztSiY7kw5joGzZcwdtKqztSiY7kw5joGzZcwdtKqztSiY7kw",
                             UpdatedUserId = 0,
